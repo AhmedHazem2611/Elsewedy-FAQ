@@ -139,6 +139,7 @@ export function BackgroundDecorations({
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isTablet = useMediaQuery('(min-width: 769px) and (max-width: 1024px)');
   const isBelow1500 = useMediaQuery('(max-width: 1500px)');
+  const isBelow1200 = useMediaQuery('(max-width: 1200px)');
 
   const circuits = techCircuits || { top: 12, right: 0, opacity: 40, size: 450 };
   const dots = techDots || { top: 10, right: 20, opacity: 30, size: 400 };
@@ -331,7 +332,7 @@ export function BackgroundDecorations({
       )}
 
       {/* Layer 2.6: Top Left Tech Circuit Dots (Red) */}
-      {!isMobile && (
+      {!isBelow1200 && (
         <div 
           className="absolute pointer-events-none z-0"
           style={{
@@ -362,7 +363,7 @@ export function BackgroundDecorations({
       )}
 
       {/* Layer 2.7: Top Right Tech Circuit Dots (Teal) */}
-      {!isMobile && (
+      {!isBelow1200 && (
         <div 
           className="absolute pointer-events-none z-0"
           style={{

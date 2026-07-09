@@ -20,12 +20,6 @@ export function LeftIllustration({ settings }: { settings: IllustrationSettings 
           opacity: 1;
           transition: all 0.5s ease-in-out;
         }
-
-        @media (max-width: 1500px) {
-          .responsive-illus-left {
-            top: 2% !important;
-          }
-        }
       `}</style>
       <div 
         className="fixed z-0 pointer-events-none hidden lg:block origin-top-left responsive-illus-left"
@@ -69,12 +63,6 @@ export function RightIllustration({ settings }: { settings: IllustrationSettings
           top: var(--illus-top);
           opacity: 1;
           transition: all 0.5s ease-in-out;
-        }
-
-        @media (max-width: 1500px) {
-          .responsive-illus-right {
-            top: 2% !important;
-          }
         }
       `}</style>
       <div 
