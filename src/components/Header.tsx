@@ -7,9 +7,11 @@ interface HeaderProps {
   padding?: number;
   lineHeight?: number;
   lineGap?: number;
+  headerHeight?: number;
+  headerPaddingX?: number;
 }
 
-export function Header({ logoSizes, padding, lineHeight, lineGap }: HeaderProps) {
+export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, headerPaddingX }: HeaderProps) {
   // Default sizes in rem if not provided
   const ministrySize = logoSizes ? `${logoSizes.ministry}rem` : '10.5rem';
   const elsewedySize = logoSizes ? `${logoSizes.elsewedy}rem` : '3.5rem';
@@ -29,42 +31,39 @@ export function Header({ logoSizes, padding, lineHeight, lineGap }: HeaderProps)
       style={{ paddingTop: actualPadding, paddingBottom: actualPadding }}
     >
       <div 
-        className="w-full max-w-[1440px] px-4 md:px-8 grid grid-cols-[1fr_auto_1fr] items-center" 
-        style={{ marginTop: actualMargin, marginBottom: actualMargin }}
+        className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[40px] flex items-center justify-center mt-6 w-max mx-auto md:max-w-[95vw]" 
+        style={{ marginTop: actualMargin, marginBottom: actualMargin, gap: dividerGap, height: headerHeight ? `${headerHeight}px` : '96px', paddingLeft: headerPaddingX !== undefined ? `${headerPaddingX}px` : '48px', paddingRight: headerPaddingX !== undefined ? `${headerPaddingX}px` : '48px' }}
       >
-        
-        {/* Left Side: Elsewedy + Line */}
-        <div className="flex justify-end items-center gap-4 md:gap-8" style={{ paddingRight: dividerGap }}>
+        <div className="flex items-center justify-center h-0">
           <img 
             src={elsewedyLogo} 
             alt="Elsewedy Logo" 
-            className="object-contain"
+            className="object-contain shrink-0"
             style={{ height: elsewedySize }} 
           />
-          <div className="w-px bg-gray-300 shrink-0" style={{ height: dividerHeight }}></div>
         </div>
+        
+        <div className="w-px bg-gray-200 shrink-0" style={{ height: dividerHeight }}></div>
 
-        {/* Center: Ministry */}
-        <div className="flex justify-center items-center">
+        <div className="flex items-center justify-center h-0">
           <img 
             src={ministryLogo} 
             alt="Ministry of Education" 
-            className="object-contain"
+            className="object-contain shrink-0"
             style={{ height: ministrySize }} 
           />
         </div>
 
-        {/* Right Side: Line + Applied Tech */}
-        <div className="flex justify-start items-center gap-4 md:gap-8" style={{ paddingLeft: dividerGap }}>
-          <div className="w-px bg-gray-300 shrink-0" style={{ height: dividerHeight }}></div>
+        <div className="w-px bg-gray-200 shrink-0" style={{ height: dividerHeight }}></div>
+
+        <div className="flex items-center justify-center h-0">
           <img 
             src={appliedTechLogo} 
             alt="Applied Technology Logo" 
-            className="object-contain"
+            className="object-contain shrink-0"
             style={{ height: appliedTechSize }} 
           />
         </div>
-
       </div>
     </header>
   );

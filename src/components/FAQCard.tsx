@@ -26,9 +26,12 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
             ${isOpen ? 'bg-red-50 border-red-100 text-[var(--color-elsewedy-red)]' : 'bg-gray-50 border-gray-100 text-teal-600'}`}>
             {icon}
           </div>
-          <h3 className={`text-xl font-bold transition-colors duration-300 ${isOpen ? 'text-gray-900' : 'text-gray-700'}`}>
+          <motion.h3 
+            whileHover={{ y: -2 }}
+            className={`text-xl font-bold transition-colors duration-300 cursor-default ${isOpen ? 'text-gray-900' : 'text-gray-700'}`}
+          >
             {question}
-          </h3>
+          </motion.h3>
         </div>
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
@@ -47,9 +50,12 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
           >
-            <div className="px-6 md:px-8 pb-8 pt-0 text-gray-600 text-lg leading-relaxed md:mr-[80px]">
+            <motion.div 
+              whileHover={{ y: -2 }}
+              className="px-6 md:px-8 pb-8 pt-0 text-gray-600 text-lg leading-relaxed md:mr-[80px] cursor-default"
+            >
               {answer}
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

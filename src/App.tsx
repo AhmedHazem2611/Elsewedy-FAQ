@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { FAQSection } from './components/FAQSection';
 import { BackgroundDecorations } from './components/BackgroundDecorations';
 import { DotMatrix } from './components/DotMatrix';
+import { LoadingScreen } from './components/LoadingScreen';
 import { LeftIllustration, RightIllustration } from './components/Illustrations';
 
 // Custom hook for auto-saving state to localStorage
@@ -53,6 +55,8 @@ function App() {
 
   const [logoSizes, setLogoSizes] = useLocalStorage('logoSizes', { ministry: 12, elsewedy: 3.5, appliedTech: 10.5 });
   const [headerPadding, setHeaderPadding] = useLocalStorage('headerPadding', -1.75);
+  const [headerHeight, setHeaderHeight] = useLocalStorage('headerHeight', 96);
+  const [headerPaddingX, setHeaderPaddingX] = useLocalStorage('headerPaddingX', 48);
   const [lineHeight, setLineHeight] = useLocalStorage('lineHeight', 5);
   const [lineGap, setLineGap] = useLocalStorage('lineGap', 2);
   const [heroTopGap, setHeroTopGap] = useLocalStorage('heroTopGap', 2);
@@ -65,6 +69,14 @@ function App() {
   const [panelPos, setPanelPos] = useLocalStorage('tweaksPanelPos', { x: 16, y: 112 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
+  const [appReady, setAppReady] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAppReady(true);
+    }, 2800);
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (!isDragging) return;
@@ -105,7 +117,17 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen relative font-arabic">
+    <>
+      <AnimatePresence>
+        {!appReady && <LoadingScreen key="splash" />}
+      </AnimatePresence>
+
+      <motion.main 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: appReady ? 1 : 0 }}
+        transition={{ duration: 1, delay: 0.2 }}
+        className="min-h-screen relative font-arabic"
+      >
       <BackgroundDecorations 
         techCircuits={techCircuits} 
         techDots={techDots} 
@@ -120,7 +142,7 @@ function App() {
       />
 
       <div className="relative z-10 flex flex-col min-h-screen w-full max-w-[1440px] mx-auto">
-        <Header logoSizes={logoSizes} padding={headerPadding} lineHeight={lineHeight} lineGap={lineGap} />
+        <Header logoSizes={logoSizes} padding={headerPadding} lineHeight={lineHeight} lineGap={lineGap} headerHeight={headerHeight} headerPaddingX={headerPaddingX} />
 
         <div className="flex-1 flex flex-col items-center pb-24" style={{ paddingTop: `${heroTopGap}rem` }}>
           <Hero />
@@ -361,6 +383,12 @@ function App() {
 
             <div className="space-y-3 pt-4 border-t border-gray-100">
               <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Header Logos (vh)</h4>
+              <label className="block text-xs text-gray-600 font-medium">Bar Height: {headerHeight}px
+                <input type="range" min="40" max="200" step="1" value={headerHeight} onChange={e => setHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+              </label>
+              <label className="block text-xs text-gray-600 font-medium">Bar Padding (Width): {headerPaddingX}px
+                <input type="range" min="0" max="200" step="1" value={headerPaddingX} onChange={e => setHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+              </label>
               <label className="block text-xs text-gray-600 font-medium">Padding: {headerPadding}rem
                 <input type="range" min="-2" max="6" step="0.25" value={headerPadding} onChange={e => setHeaderPadding(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
               </label>
@@ -402,7 +430,8 @@ function App() {
           Show Tweaks
         </button>
       )}
-    </main>
+        </motion.main>
+    </>
   );
 }
 

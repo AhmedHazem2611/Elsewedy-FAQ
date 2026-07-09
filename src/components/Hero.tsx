@@ -1,6 +1,30 @@
+import { motion } from 'framer-motion';
+
 export function Hero() {
   return (
     <section className="flex flex-col items-center text-center mt-8 mb-16 px-4 relative z-10">
+      <style>{`
+        @keyframes shine {
+          to {
+            background-position: 200% center;
+          }
+        }
+        .animate-shine {
+          background: linear-gradient(
+            110deg,
+            var(--color-elsewedy-red) 20%,
+            var(--color-elsewedy-red) 40%,
+            #ffb3b3 50%,
+            var(--color-elsewedy-red) 60%,
+            var(--color-elsewedy-red) 80%
+          );
+          background-size: 200% auto;
+          color: transparent;
+          -webkit-background-clip: text;
+          background-clip: text;
+          animation: shine 4s linear infinite;
+        }
+      `}</style>
       <div className="relative inline-block mb-6">
         <span className="text-sm font-bold text-[var(--color-elsewedy-red)] tracking-wider">
           الأسئلة الشائعة
@@ -8,9 +32,12 @@ export function Hero() {
         <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[var(--color-elsewedy-red)] rounded-full"></div>
       </div>
       
-      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight">
-        الأسئلة <span className="text-[var(--color-elsewedy-red)]">الأكثر</span> شيوعًا
-      </h1>
+      <motion.h1 
+        whileHover={{ y: -2 }}
+        className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight cursor-default"
+      >
+        الأسئلة <span className="animate-shine inline-block">الأكثر</span> شيوعًا
+      </motion.h1>
       
       <p className="text-gray-500 text-lg md:text-xl max-w-2xl leading-relaxed">
         كل ما يحتاجه أولياء الأمور لمعرفة المزيد عن مدرسة السويدي للتكنولوجيا التطبيقية،
