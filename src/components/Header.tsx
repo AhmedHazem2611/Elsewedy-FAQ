@@ -38,7 +38,7 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
           <img 
             src={elsewedyLogo} 
             alt="Elsewedy Logo" 
-            className="object-contain shrink-0"
+            className="object-contain shrink-0 transition-transform duration-300 ease-out hover:-translate-y-1.5 cursor-pointer"
             style={{ height: elsewedySize }} 
           />
         </div>
@@ -49,7 +49,7 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
           <img 
             src={ministryLogo} 
             alt="Ministry of Education" 
-            className="object-contain shrink-0"
+            className="object-contain shrink-0 transition-transform duration-300 ease-out hover:-translate-y-1.5 cursor-pointer"
             style={{ height: ministrySize }} 
           />
         </div>
@@ -60,7 +60,7 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
           <img 
             src={appliedTechLogo} 
             alt="Applied Technology Logo" 
-            className="object-contain shrink-0"
+            className="object-contain shrink-0 transition-transform duration-300 ease-out hover:-translate-y-1.5 cursor-pointer"
             style={{ height: appliedTechSize }} 
           />
         </div>
