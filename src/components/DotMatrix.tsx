@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 // Custom hook for window size to make matrix responsive
 function useWindowSize() {
@@ -9,7 +9,7 @@ function useWindowSize() {
 
   useEffect(() => {
     // Debounce the resize event to prevent rapid recalculations while dragging the window
-    let timeoutId: NodeJS.Timeout;
+    let timeoutId: ReturnType<typeof setTimeout>;
     
     function handleResize() {
       clearTimeout(timeoutId);

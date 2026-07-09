@@ -4,7 +4,6 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { FAQSection } from './components/FAQSection';
 import { BackgroundDecorations } from './components/BackgroundDecorations';
-import { DotMatrix } from './components/DotMatrix';
 import { LoadingScreen } from './components/LoadingScreen';
 import { LeftIllustration, RightIllustration } from './components/Illustrations';
 
@@ -36,8 +35,6 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
 const ENABLE_DEV_TOOLS = true;
 
 function App() {
-  const [rightIndex, setRightIndex] = useState(0);
-
   const [leftSettings, setLeftSettings] = useLocalStorage('leftSettingsTop', { size: 30, top: 15, left: -2 });
   const [rightSettings, setRightSettings] = useLocalStorage('rightSettingsTopV3', { size: 58, top: 16, right: -18 });
   const [techCircuits, setTechCircuits] = useLocalStorage('techCircuits', { top: 12, right: 0, opacity: 40, size: 450 });

@@ -17,112 +17,6 @@ function useMediaQuery(query: string) {
   return matches;
 }
 
-const TechCircle = ({ color, className, align = 'right', style }: { color: string, className: string, align?: 'left' | 'right', style?: React.CSSProperties }) => {
-  const isRight = align === 'right';
-  const densityCx = isRight ? "65%" : "35%";
-  const densityCy = "65%";
-  
-  // Dot coordinates on the r=230 circle (top left for right align, top right for left align)
-  const dotX = isRight ? 171.4 : 328.6;
-  const dotY = 34;
-  
-  // Tech line path extending from the satellite dot
-  const linePath = isRight 
-    ? `M ${dotX} ${dotY} L ${dotX + 20} ${dotY} L ${dotX + 30} ${dotY + 10}`
-    : `M ${dotX} ${dotY} L ${dotX - 20} ${dotY} L ${dotX - 30} ${dotY + 10}`;
-
-  return (
-    <svg className={className} style={style} viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <pattern id={`dots-${align}`} x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.5" fill={color} />
-        </pattern>
-        
-        <radialGradient id={`grad-${align}`} cx={densityCx} cy={densityCy} r="60%">
-          <stop offset="0%" stopColor={color} stopOpacity="0.06" />
-          <stop offset="100%" stopColor={color} stopOpacity="0" />
-        </radialGradient>
-        
-        <radialGradient id={`mask-grad-${align}`} cx={densityCx} cy={densityCy} r="60%">
-          <stop offset="0%" stopColor="white" stopOpacity="0.85" />
-          <stop offset="100%" stopColor="white" stopOpacity="0" />
-        </radialGradient>
-        
-        <mask id={`mask-${align}`}>
-          <circle cx="250" cy="250" r="180" fill={`url(#mask-grad-${align})`} />
-        </mask>
-      </defs>
-      
-      {/* Outer Faint Ring */}
-      <circle cx="250" cy="250" r="230" fill="none" stroke={color} strokeWidth="0.5" opacity="0.3" />
-      
-      {/* Little Satellite Dot & Tech Line */}
-      <g opacity="0.8">
-        <circle cx={dotX} cy={dotY} r="4" fill={color} />
-        <path d={linePath} fill="none" stroke={color} strokeWidth="1.5" />
-      </g>
-
-      {/* Main Solid Stroke Ring */}
-      <circle cx="250" cy="250" r="180" fill="none" stroke={color} strokeWidth="1.5" opacity="0.85" />
-      
-      {/* Subtle Inner Glow */}
-      <circle cx="250" cy="250" r="180" fill={`url(#grad-${align})`} />
-      
-      {/* Masked Dot Matrix */}
-      <circle cx="250" cy="250" r="180" fill={`url(#dots-${align})`} mask={`url(#mask-${align})`} />
-    </svg>
-  );
-};
-
-const RedTechCircle = ({ className, style }: { className: string, style?: React.CSSProperties }) => {
-  const color = "#E53935";
-  
-  return (
-    <svg className={className} style={style} viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        {/* White dots for the red circle */}
-        <pattern id="dots-red" x="0" y="0" width="16" height="16" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.5" fill="white" opacity="0.9" />
-        </pattern>
-        
-        {/* Gradient for the dots to fade out toward the arc boundary. Center is bottom-left (0, 500) */}
-        <radialGradient id="dots-mask-grad" cx="0%" cy="100%" r="100%">
-          <stop offset="0%" stopColor="white" stopOpacity="1" />
-          <stop offset="40%" stopColor="white" stopOpacity="0.8" />
-          <stop offset="75%" stopColor="white" stopOpacity="0" />
-        </radialGradient>
-        
-        <mask id="dots-mask">
-          <circle cx="0" cy="500" r="400" fill="url(#dots-mask-grad)" />
-        </mask>
-
-        {/* Gradient for the red core to fade slightly toward the arc boundary */}
-        <radialGradient id="core-grad" cx="0%" cy="100%" r="100%">
-          <stop offset="0%" stopColor={color} stopOpacity="1" />
-          <stop offset="50%" stopColor={color} stopOpacity="0.85" />
-          <stop offset="100%" stopColor={color} stopOpacity="0.5" />
-        </radialGradient>
-      </defs>
-      
-      {/* Heavy Inner Red Glow (Solid portion, clipped by radius) */}
-      <circle cx="0" cy="500" r="400" fill="url(#core-grad)" />
-      
-      {/* Masked White Dot Matrix */}
-      <circle cx="0" cy="500" r="400" fill="url(#dots-red)" mask="url(#dots-mask)" />
-      
-      {/* Main Solid Stroke Rings bounding the red area */}
-      {/* Thick semi-transparent white/gray inner border */}
-      <circle cx="0" cy="500" r="400" fill="none" stroke="white" strokeWidth="12" opacity="0.5" />
-      {/* Crisp thin red border matching the edge */}
-      <circle cx="0" cy="500" r="400" fill="none" stroke={color} strokeWidth="1" opacity="0.6" />
-      
-      {/* Outer Faint Rings (thin red traces) */}
-      <circle cx="0" cy="500" r="430" fill="none" stroke={color} strokeWidth="0.5" opacity="0.3" />
-      <circle cx="0" cy="500" r="450" fill="none" stroke={color} strokeWidth="0.5" opacity="0.15" />
-    </svg>
-  );
-};
-
 export function BackgroundDecorations({ 
   techCircuits, techDots,
   techCircuitsLeft, techDotsLeft,
@@ -138,7 +32,6 @@ export function BackgroundDecorations({
 }) {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const isTablet = useMediaQuery('(min-width: 769px) and (max-width: 1024px)');
-  const isBelow1500 = useMediaQuery('(max-width: 1500px)');
   const isBelow1200 = useMediaQuery('(max-width: 1200px)');
 
   const circuits = techCircuits || { top: 12, right: 0, opacity: 40, size: 450 };
