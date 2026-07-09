@@ -1,0 +1,58 @@
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
+import type { ReactNode } from 'react';
+
+interface FAQCardProps {
+  question: string;
+  answer: string;
+  icon: ReactNode;
+  isOpen: boolean;
+  onClick: () => void;
+}
+
+export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProps) {
+  return (
+    <motion.div
+      className={`bg-white rounded-[24px] overflow-hidden border border-gray-100 cursor-pointer 
+        ${isOpen ? 'shadow-2xl shadow-gray-200/60 z-20 relative' : 'shadow-lg shadow-gray-100/80 hover:shadow-xl z-10 relative'}`}
+      onClick={onClick}
+      whileHover={!isOpen ? { y: -4 } : {}}
+      transition={{ duration: 0.3 }}
+      layout
+    >
+      <div className="flex items-center justify-between p-6 md:p-8">
+        <div className="flex items-center gap-6 flex-1">
+          <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 border 
+            ${isOpen ? 'bg-red-50 border-red-100 text-[var(--color-elsewedy-red)]' : 'bg-gray-50 border-gray-100 text-teal-600'}`}>
+            {icon}
+          </div>
+          <h3 className={`text-xl font-bold transition-colors duration-300 ${isOpen ? 'text-gray-900' : 'text-gray-700'}`}>
+            {question}
+          </h3>
+        </div>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3, ease: "easeInOut" }}
+          className={`shrink-0 ml-2 ${isOpen ? 'text-[var(--color-elsewedy-red)]' : 'text-gray-400'}`}
+        >
+          <ChevronDown size={28} strokeWidth={2.5} />
+        </motion.div>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+          >
+            <div className="px-6 md:px-8 pb-8 pt-0 text-gray-600 text-lg leading-relaxed md:mr-[80px]">
+              {answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  );
+}

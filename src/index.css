@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --color-elsewedy-red: #E3262D;
+  --color-elsewedy-teal: #008282;
+  --color-elsewedy-gold: #C09A4D;
+  --font-arabic: "Cairo", "Alexandria", sans-serif;
+}
+
+:root {
+  direction: rtl;
+  font-family: var(--font-arabic);
+  background-color: white;
+  color: #111827;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: #ffffff;
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+/* Hide scrollbars globally to prevent double scrollbars */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Allow scrollbar in the dev tweaks panel */
+.scrollable-panel::-webkit-scrollbar {
+  display: block;
+  width: 6px;
+}
+.scrollable-panel::-webkit-scrollbar-track {
+  background: transparent;
+}
+.scrollable-panel::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 4px;
+}

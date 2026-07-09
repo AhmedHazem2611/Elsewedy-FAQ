@@ -1,0 +1,22 @@
+export function Hero() {
+  return (
+    <section className="flex flex-col items-center text-center mt-8 mb-16 px-4 relative z-10">
+      <div className="relative inline-block mb-6">
+        <span className="text-sm font-bold text-[var(--color-elsewedy-red)] tracking-wider">
+          الأسئلة الشائعة
+        </span>
+        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-[var(--color-elsewedy-red)] rounded-full"></div>
+      </div>
+      
+      <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight">
+        الأسئلة <span className="text-[var(--color-elsewedy-red)]">الأكثر</span> شيوعًا
+      </h1>
+      
+      <p className="text-gray-500 text-lg md:text-xl max-w-2xl leading-relaxed">
+        كل ما يحتاجه أولياء الأمور لمعرفة المزيد عن مدرسة السويدي للتكنولوجيا التطبيقية،
+        <br className="hidden md:block" />
+        قبل التقديم.
+      </p>
+    </section>
+  );
+}
