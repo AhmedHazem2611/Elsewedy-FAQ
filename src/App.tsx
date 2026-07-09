@@ -35,28 +35,28 @@ function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val
 const ENABLE_DEV_TOOLS = true;
 
 function App() {
-  const [leftSettings, setLeftSettings] = useLocalStorage('leftSettingsTop', { size: 30, top: 15, left: -2 });
+  const [leftSettings, setLeftSettings] = useLocalStorage('leftSettingsTop', { size: 50, top: 24, left: -9 });
   const [rightSettings, setRightSettings] = useLocalStorage('rightSettingsTopV3', { size: 58, top: 16, right: -18 });
-  const [techCircuits, setTechCircuits] = useLocalStorage('techCircuits', { top: 12, right: 0, opacity: 40, size: 450 });
-  const [techDots, setTechDots] = useLocalStorage('techDots', { top: 10, right: 20, opacity: 30, size: 400 });
-  const [techCircuitsLeft, setTechCircuitsLeft] = useLocalStorage('techCircuitsLeft', { top: 12, left: 0, opacity: 40, size: 450 });
-  const [techDotsLeft, setTechDotsLeft] = useLocalStorage('techDotsLeft', { top: 10, left: 20, opacity: 30, size: 400 });
+  const [techCircuits, setTechCircuits] = useLocalStorage('techCircuits', { top: -1, right: 0, opacity: 9, size: 307 });
+  const [techDots, setTechDots] = useLocalStorage('techDots', { top: -5, right: 11, opacity: 68, size: 284 });
+  const [techCircuitsLeft, setTechCircuitsLeft] = useLocalStorage('techCircuitsLeft', { top: -2, left: 0, opacity: 15, size: 288 });
+  const [techDotsLeft, setTechDotsLeft] = useLocalStorage('techDotsLeft', { top: -4, left: 10, opacity: 26, size: 326 });
   
-  const [techCircuitsBottomRight, setTechCircuitsBottomRight] = useLocalStorage('techCircuitsBottomRight', { top: 80, right: 0, opacity: 40, size: 450 });
+  const [techCircuitsBottomRight, setTechCircuitsBottomRight] = useLocalStorage('techCircuitsBottomRight', { top: 62, right: -1, opacity: 10, size: 430 });
   const [techDotsBottomRight, setTechDotsBottomRight] = useLocalStorage('techDotsBottomRight', { top: 80, right: 20, opacity: 30, size: 400 });
-  const [techCircuitsBottomLeft, setTechCircuitsBottomLeft] = useLocalStorage('techCircuitsBottomLeft', { top: 80, left: 0, opacity: 40, size: 450 });
+  const [techCircuitsBottomLeft, setTechCircuitsBottomLeft] = useLocalStorage('techCircuitsBottomLeft', { top: 69, left: 0, opacity: 10, size: 450 });
   const [techDotsBottomLeft, setTechDotsBottomLeft] = useLocalStorage('techDotsBottomLeft', { top: 80, left: 20, opacity: 30, size: 400 });
 
-  const [centerDots1, setCenterDots1] = useLocalStorage('centerDots1', { top: 45, left: 35, opacity: 20, size: 400 });
-  const [centerDots2, setCenterDots2] = useLocalStorage('centerDots2', { top: 55, left: 65, opacity: 20, size: 400 });
+  const [centerDots1, setCenterDots1] = useLocalStorage('centerDots1', { top: 34, left: 71, opacity: 100, size: 208 });
+  const [centerDots2, setCenterDots2] = useLocalStorage('centerDots2', { top: 35, left: 30, opacity: 100, size: 204 });
 
   const [logoSizes, setLogoSizes] = useLocalStorage('logoSizes', { ministry: 12, elsewedy: 3.5, appliedTech: 10.5 });
-  const [headerPadding, setHeaderPadding] = useLocalStorage('headerPadding', -1.75);
-  const [headerHeight, setHeaderHeight] = useLocalStorage('headerHeight', 96);
-  const [headerPaddingX, setHeaderPaddingX] = useLocalStorage('headerPaddingX', 48);
+  const [headerPadding, setHeaderPadding] = useLocalStorage('headerPadding', 1.75);
+  const [headerHeight, setHeaderHeight] = useLocalStorage('headerHeight', 123);
+  const [headerPaddingX, setHeaderPaddingX] = useLocalStorage('headerPaddingX', 37);
   const [lineHeight, setLineHeight] = useLocalStorage('lineHeight', 5);
-  const [lineGap, setLineGap] = useLocalStorage('lineGap', 2);
-  const [heroTopGap, setHeroTopGap] = useLocalStorage('heroTopGap', 2);
+  const [lineGap, setLineGap] = useLocalStorage('lineGap', 0.5);
+  const [heroTopGap, setHeroTopGap] = useLocalStorage('heroTopGap', 0);
   const [bgSize, setBgSize] = useLocalStorage('bgSize', 100);
 
   const [showControls, setShowControls] = useState(false);
