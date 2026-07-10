@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import ministryLogo from '../assets/Ministry-of-Education-and-techinical-education logo.png';
 import elsewedyLogo from '../assets/Elsewedy logo-DxuTHIWw.png';
 import appliedTechLogo from '../assets/applied teccnology logo.png';
@@ -17,6 +18,25 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
   const elsewedySize = logoSizes ? `${logoSizes.elsewedy}rem` : '3.5rem';
   const appliedTechSize = logoSizes ? `${logoSizes.appliedTech}rem` : '10.5rem';
   
+
+  const [scale, setScale] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const targetWidth = 650;
+      if (window.innerWidth < targetWidth) {
+        // Calculate safe scale ensuring it fits within screen with 16px padding on sides
+        setScale(Math.min(1, (window.innerWidth - 32) / 600));
+      } else {
+        setScale(1);
+      }
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const paddingVal = padding !== undefined ? padding : -1;
   const actualPadding = Math.max(0, paddingVal) + 'rem';
   const actualMargin = Math.min(0, paddingVal) + 'rem';
@@ -31,8 +51,8 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
       style={{ paddingTop: actualPadding, paddingBottom: actualPadding }}
     >
       <div 
-        className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[40px] flex items-center justify-center mt-6 w-max mx-auto md:max-w-[95vw]" 
-        style={{ marginTop: actualMargin, marginBottom: actualMargin, gap: dividerGap, height: headerHeight ? `${headerHeight}px` : '96px', paddingLeft: headerPaddingX !== undefined ? `${headerPaddingX}px` : '48px', paddingRight: headerPaddingX !== undefined ? `${headerPaddingX}px` : '48px' }}
+        className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[40px] flex items-center justify-center mt-6 w-max mx-auto transform-origin-top" 
+        style={{ zoom: scale < 1 ? scale : undefined, marginTop: actualMargin, marginBottom: actualMargin, gap: dividerGap, height: headerHeight ? `${headerHeight}px` : '96px', paddingLeft: headerPaddingX !== undefined ? `${headerPaddingX}px` : '48px', paddingRight: headerPaddingX !== undefined ? `${headerPaddingX}px` : '48px' }}
       >
         <div className="flex items-center justify-center h-0">
           <img 
