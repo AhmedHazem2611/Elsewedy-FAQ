@@ -59,6 +59,23 @@ function App() {
   const [heroTopGap, setHeroTopGap] = useLocalStorage('heroTopGap', 0);
   const [bgSize, setBgSize] = useLocalStorage('bgSize', 100);
 
+  const [mobileCenterIllustrationSize, setMobileCenterIllustrationSize] = useLocalStorage('mobileCenterIllustrationSize', 100);
+  const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 7, elsewedy: 3, appliedTech: 7 });
+  const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 72);
+  const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 16);
+  const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 4);
+  const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.2);
+  const [isMobileScreen, setIsMobileScreen] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
+
+  useEffect(() => {
+    const handleScreenResize = () => {
+      setIsMobileScreen(window.innerWidth < 1024);
+    };
+    handleScreenResize();
+    window.addEventListener('resize', handleScreenResize);
+    return () => window.removeEventListener('resize', handleScreenResize);
+  }, []);
+
   const [showControls, setShowControls] = useState(false);
   const [showSaveMessage, setShowSaveMessage] = useState(false);
 
@@ -139,12 +156,24 @@ function App() {
       />
 
       <div className="relative z-10 flex flex-col min-h-screen w-full max-w-[1440px] mx-auto">
-        <Header logoSizes={logoSizes} padding={headerPadding} lineHeight={lineHeight} lineGap={lineGap} headerHeight={headerHeight} headerPaddingX={headerPaddingX} />
+        <Header 
+          logoSizes={logoSizes} 
+          padding={headerPadding} 
+          lineHeight={lineHeight} 
+          lineGap={lineGap} 
+          headerHeight={headerHeight} 
+          headerPaddingX={headerPaddingX} 
+          mobileLogoSizes={mobileLogoSizes}
+          mobileLineHeight={mobileLineHeight}
+          mobileLineGap={mobileLineGap}
+          mobileHeaderHeight={mobileHeaderHeight}
+          mobileHeaderPaddingX={mobileHeaderPaddingX}
+        />
 
         <div className="flex-1 flex flex-col items-center pb-24" style={{ paddingTop: `${heroTopGap}rem` }}>
 
           {/* Centered Right Illustration for smaller screens */}
-          <div className="lg:hidden w-full max-w-lg md:max-w-xl mx-auto px-2 md:px-6 mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
+          <div className="lg:hidden w-full mx-auto mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ maxWidth: `${mobileCenterIllustrationSize}vw` }}>
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] mix-blend-multiply pointer-events-none"
               style={{
@@ -204,7 +233,9 @@ function App() {
             className="flex justify-between items-center mb-4 sticky top-0 bg-white/90 pb-2 z-10 border-b cursor-grab active:cursor-grabbing select-none"
             onPointerDown={handlePointerDown}
           >
-            <h3 className="font-bold text-gray-800 pointer-events-none">Layout Tweaks</h3>
+            <h3 className="font-bold text-gray-800 pointer-events-none">
+              {isMobileScreen ? 'Mobile Layout Tweaks' : 'Desktop Layout Tweaks'}
+            </h3>
             <div className="flex gap-2 items-center">
               {showSaveMessage && <span className="text-xs text-green-600 font-bold">Saved!</span>}
               <button onClick={handleManualSave} className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs font-bold transition-colors">Save</button>
@@ -213,8 +244,9 @@ function App() {
           </div>
 
           <div className="space-y-6">
-
-            <div className="space-y-3">
+            {!isMobileScreen ? (
+              <>
+                <div className="space-y-3">
               <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Left Illustration</h4>
               <label className="block text-xs text-gray-600 font-medium">Size: {leftSettings.size}vw
                 <input type="range" min="10" max="150" value={leftSettings.size} onChange={e => setLeftSettings({ ...leftSettings, size: Number(e.target.value) })} className="w-full mt-1 accent-red-500" />
@@ -432,15 +464,57 @@ function App() {
             </div>
 
             <div className="space-y-3 pt-4 border-t border-gray-100">
-              <h4 className="font-semibold text-xs text-purple-600 uppercase tracking-wider">Background</h4>
-              <label className="block text-xs text-gray-600 font-medium">Size: {bgSize}%
-                <input type="range" min="10" max="300" step="1" value={bgSize} onChange={e => setBgSize(Number(e.target.value))} className="w-full mt-1 accent-purple-600" />
-              </label>
-            </div>
+                  <h4 className="font-semibold text-xs text-purple-600 uppercase tracking-wider">Background</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Size: {bgSize}%
+                    <input type="range" min="10" max="300" step="1" value={bgSize} onChange={e => setBgSize(Number(e.target.value))} className="w-full mt-1 accent-purple-600" />
+                  </label>
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="space-y-3">
+                  <h4 className="font-semibold text-xs text-blue-600 uppercase tracking-wider">Mobile Header Logos (px/rem)</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Bar Height: {mobileHeaderHeight}px
+                    <input type="range" min="40" max="150" step="1" value={mobileHeaderHeight} onChange={e => setMobileHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Bar Padding: {mobileHeaderPaddingX}px
+                    <input type="range" min="0" max="100" step="1" value={mobileHeaderPaddingX} onChange={e => setMobileHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Lines Height: {mobileLineHeight}rem
+                    <input type="range" min="1" max="12" step="0.5" value={mobileLineHeight} onChange={e => setMobileLineHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Lines Gap: {mobileLineGap}rem
+                    <input type="range" min="0" max="4" step="0.1" value={mobileLineGap} onChange={e => setMobileLineGap(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Ministry Size: {mobileLogoSizes.ministry}rem
+                    <input type="range" min="1" max="12" step="0.5" value={mobileLogoSizes.ministry} onChange={e => setMobileLogoSizes({ ...mobileLogoSizes, ministry: Number(e.target.value) })} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Elsewedy Size: {mobileLogoSizes.elsewedy}rem
+                    <input type="range" min="1" max="12" step="0.5" value={mobileLogoSizes.elsewedy} onChange={e => setMobileLogoSizes({ ...mobileLogoSizes, elsewedy: Number(e.target.value) })} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Applied Tech Size: {mobileLogoSizes.appliedTech}rem
+                    <input type="range" min="1" max="12" step="0.5" value={mobileLogoSizes.appliedTech} onChange={e => setMobileLogoSizes({ ...mobileLogoSizes, appliedTech: Number(e.target.value) })} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Mobile Center Illustration</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Width: {mobileCenterIllustrationSize}vw
+                    <input type="range" min="30" max="150" step="1" value={mobileCenterIllustrationSize} onChange={e => setMobileCenterIllustrationSize(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-purple-600 uppercase tracking-wider">Background</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Size: {bgSize}%
+                    <input type="range" min="10" max="300" step="1" value={bgSize} onChange={e => setBgSize(Number(e.target.value))} className="w-full mt-1 accent-purple-600" />
+                  </label>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}
       {ENABLE_DEV_TOOLS && !showControls && (
+
         <button
           onClick={() => setShowControls(true)}
           className="fixed top-28 left-4 z-50 bg-white shadow-md border border-gray-200 px-3 py-1 rounded-md text-xs font-sans text-gray-600 hover:text-gray-900"

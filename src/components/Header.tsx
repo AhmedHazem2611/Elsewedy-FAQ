@@ -10,11 +10,28 @@ interface HeaderProps {
   lineGap?: number;
   headerHeight?: number;
   headerPaddingX?: number;
+  mobileLogoSizes?: { ministry: number; elsewedy: number; appliedTech: number };
+  mobileLineHeight?: number;
+  mobileLineGap?: number;
+  mobileHeaderHeight?: number;
+  mobileHeaderPaddingX?: number;
 }
 
-export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, headerPaddingX }: HeaderProps) {
+export function Header({ 
+  logoSizes, 
+  padding, 
+  lineHeight, 
+  lineGap, 
+  headerHeight, 
+  headerPaddingX,
+  mobileLogoSizes,
+  mobileLineHeight,
+  mobileLineGap,
+  mobileHeaderHeight,
+  mobileHeaderPaddingX
+}: HeaderProps) {
   // Sizes and spacing logic computed dynamically
-  const [scale, setScale] = useState(1);
+const [scale, setScale] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -23,8 +40,6 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
       setIsMobile(width < 768);
       const targetWidth = 650;
       if (width < targetWidth) {
-        // We use a much smaller base width (400) because we are already shrinking the contents
-        // so it doesn't need to be zoomed out as aggressively.
         setScale(Math.min(1, (width - 16) / 450));
       } else {
         setScale(1);
@@ -41,26 +56,25 @@ export function Header({ logoSizes, padding, lineHeight, lineGap, headerHeight, 
   const actualMargin = Math.min(0, paddingVal) + 'rem';
   
   const baseLineGap = lineGap !== undefined ? lineGap : 2;
-  const dividerGap = isMobile ? `${baseLineGap * 0.4}rem` : `${baseLineGap}rem`;
+  const dividerGap = isMobile ? `${mobileLineGap !== undefined ? mobileLineGap : baseLineGap * 0.4}rem` : `${baseLineGap}rem`;
   
   const baseLineHeight = lineHeight !== undefined ? lineHeight : 6;
-  const dividerHeight = isMobile ? `${baseLineHeight * 0.7}rem` : `${baseLineHeight}rem`;
+  const dividerHeight = isMobile ? `${mobileLineHeight !== undefined ? mobileLineHeight : baseLineHeight * 0.7}rem` : `${baseLineHeight}rem`;
 
   const basePaddingX = headerPaddingX !== undefined ? headerPaddingX : 48;
-  const currentPaddingX = isMobile ? basePaddingX * 0.4 : basePaddingX;
+  const currentPaddingX = isMobile ? (mobileHeaderPaddingX !== undefined ? mobileHeaderPaddingX : basePaddingX * 0.4) : basePaddingX;
   
   const baseHeight = headerHeight !== undefined ? headerHeight : 96;
-  const currentHeight = isMobile ? baseHeight * 0.75 : baseHeight;
+  const currentHeight = isMobile ? (mobileHeaderHeight !== undefined ? mobileHeaderHeight : baseHeight * 0.75) : baseHeight;
 
-  // Reduce ministry and applied tech logos more than elsewedy
   const ministrySizeNum = logoSizes ? logoSizes.ministry : 10.5;
-  const ministrySize = isMobile ? `${ministrySizeNum * 0.65}rem` : `${ministrySizeNum}rem`;
+  const ministrySize = isMobile ? `${mobileLogoSizes ? mobileLogoSizes.ministry : ministrySizeNum * 0.65}rem` : `${ministrySizeNum}rem`;
 
   const elsewedySizeNum = logoSizes ? logoSizes.elsewedy : 3.5;
-  const elsewedySize = isMobile ? `${elsewedySizeNum * 0.85}rem` : `${elsewedySizeNum}rem`;
+  const elsewedySize = isMobile ? `${mobileLogoSizes ? mobileLogoSizes.elsewedy : elsewedySizeNum * 0.85}rem` : `${elsewedySizeNum}rem`;
 
   const appliedTechSizeNum = logoSizes ? logoSizes.appliedTech : 10.5;
-  const appliedTechSize = isMobile ? `${appliedTechSizeNum * 0.65}rem` : `${appliedTechSizeNum}rem`;
+  const appliedTechSize = isMobile ? `${mobileLogoSizes ? mobileLogoSizes.appliedTech : appliedTechSizeNum * 0.65}rem` : `${appliedTechSizeNum}rem`;
 
   return (
     <header 
