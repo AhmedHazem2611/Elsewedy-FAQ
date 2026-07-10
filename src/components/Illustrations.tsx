@@ -2,6 +2,8 @@ import React from 'react';
 import buildingImage from '../assets/building.png';
 import educationImage from '../assets/education.png';
 
+export { educationImage };
+
 interface IllustrationSettings {
   size: number;
   top: number;
