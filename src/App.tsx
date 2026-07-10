@@ -144,7 +144,7 @@ function App() {
         <div className="flex-1 flex flex-col items-center pb-24" style={{ paddingTop: `${heroTopGap}rem` }}>
 
           {/* Centered Right Illustration for smaller screens */}
-          <div className="lg:hidden w-full max-w-sm md:max-w-md mx-auto px-6 mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
+          <div className="lg:hidden w-full max-w-lg md:max-w-xl mx-auto px-2 md:px-6 mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer">
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] mix-blend-multiply pointer-events-none"
               style={{
