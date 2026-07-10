@@ -123,7 +123,7 @@ function App() {
         initial={{ opacity: 0 }}
         animate={{ opacity: appReady ? 1 : 0 }}
         transition={{ duration: 1, delay: 0.2 }}
-        className="min-h-screen relative font-arabic"
+        className="min-h-screen relative font-arabic overflow-x-hidden"
       >
       <BackgroundDecorations 
         techCircuits={techCircuits} 
