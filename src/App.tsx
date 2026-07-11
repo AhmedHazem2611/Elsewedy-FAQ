@@ -63,6 +63,7 @@ function App() {
   const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 8, elsewedy: 2, appliedTech: 6.5 });
   const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 96);
   const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 16);
+  const [mobileHeaderPadding, setMobileHeaderPadding] = useLocalStorage('mobileHeaderPadding', 1.75);
   const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 3.5);
   const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.5);
   const [isMobileScreen, setIsMobileScreen] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
@@ -164,6 +165,7 @@ function App() {
           headerHeight={headerHeight} 
           headerPaddingX={headerPaddingX} 
           mobileLogoSizes={mobileLogoSizes}
+          mobilePadding={mobileHeaderPadding}
           mobileLineHeight={mobileLineHeight}
           mobileLineGap={mobileLineGap}
           mobileHeaderHeight={mobileHeaderHeight}
@@ -232,8 +234,9 @@ function App() {
             }
           `}</style>
           <div 
-            className="flex justify-between items-center mb-4 sticky top-0 bg-white/90 pb-2 z-10 border-b cursor-grab active:cursor-grabbing select-none"
+            className="p-3 bg-gray-50 border-b border-gray-200 cursor-move rounded-t-lg flex justify-between items-center select-none"
             onPointerDown={handlePointerDown}
+            style={{ touchAction: 'none' }}
           >
             <h3 className="font-bold text-gray-800 pointer-events-none">
               {isMobileScreen ? 'Mobile Layout Tweaks' : 'Desktop Layout Tweaks'}
@@ -479,13 +482,16 @@ function App() {
                   <label className="block text-xs text-gray-600 font-medium">Bar Height: {mobileHeaderHeight}px
                     <input type="range" min="-200" max="150" step="1" value={mobileHeaderHeight} onChange={e => setMobileHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
-                  <label className="block text-xs text-gray-600 font-medium">Bar Padding: {mobileHeaderPaddingX}px
+                  <label className="block text-xs text-gray-600 font-medium">Bar Padding (Width): {mobileHeaderPaddingX}px
                     <input type="range" min="-200" max="100" step="1" value={mobileHeaderPaddingX} onChange={e => setMobileHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Top Page Padding: {mobileHeaderPadding}rem
+                    <input type="range" min="-2" max="6" step="0.25" value={mobileHeaderPadding} onChange={e => setMobileHeaderPadding(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
                   <label className="block text-xs text-gray-600 font-medium">Lines Height: {mobileLineHeight}rem
                     <input type="range" min="1" max="12" step="0.5" value={mobileLineHeight} onChange={e => setMobileLineHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
-                  <label className="block text-xs text-gray-600 font-medium">Lines Gap: {mobileLineGap}rem
+                  <label className="block text-xs text-gray-600 font-medium">Logo Gap (Spacing): {mobileLineGap}rem
                     <input type="range" min="0" max="4" step="0.1" value={mobileLineGap} onChange={e => setMobileLineGap(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
                   <label className="block text-xs text-gray-600 font-medium">Ministry Size: {mobileLogoSizes.ministry}rem

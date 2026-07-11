@@ -11,10 +11,11 @@ interface HeaderProps {
   headerHeight?: number;
   headerPaddingX?: number;
   mobileLogoSizes?: { ministry: number; elsewedy: number; appliedTech: number };
-  mobileLineHeight?: number;
-  mobileLineGap?: number;
   mobileHeaderHeight?: number;
   mobileHeaderPaddingX?: number;
+  mobilePadding?: number;
+  mobileLineHeight?: number;
+  mobileLineGap?: number;
 }
 
 export function Header({ 
@@ -28,7 +29,8 @@ export function Header({
   mobileLineHeight,
   mobileLineGap,
   mobileHeaderHeight,
-  mobileHeaderPaddingX
+  mobileHeaderPaddingX,
+  mobilePadding
 }: HeaderProps) {
   // Sizes and spacing logic computed dynamically
 const [scale, setScale] = useState(1);
@@ -51,7 +53,7 @@ const [scale, setScale] = useState(1);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const paddingVal = padding !== undefined ? padding : -1;
+  const paddingVal = isMobile ? (mobilePadding !== undefined ? mobilePadding : -1) : (padding !== undefined ? padding : -1);
   const actualPadding = Math.max(0, paddingVal) + 'rem';
   const actualMargin = Math.min(0, paddingVal) + 'rem';
   
