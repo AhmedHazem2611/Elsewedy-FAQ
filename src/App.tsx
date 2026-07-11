@@ -180,7 +180,7 @@ function App() {
 
           {/* Centered Right Illustration for smaller screens */}
           <div className="lg:hidden w-full flex justify-center overflow-visible mb-2 relative z-10">
-            <div className="shrink-0 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ width: `${mobileCenterIllustrationSize}vw` }}>
+            <div className="shrink-0 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ width: `${mobileCenterIllustrationSize}px` }}>
               <div
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] mix-blend-multiply pointer-events-none"
                 style={{
@@ -523,8 +523,8 @@ function App() {
                 </div>
                 <div className="space-y-3 pt-4 border-t border-gray-100">
                   <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Mobile Center Illustration</h4>
-                  <label className="block text-xs text-gray-600 font-medium">Width: {mobileCenterIllustrationSize}vw
-                    <input type="range" min="30" max="300" step="1" value={mobileCenterIllustrationSize} onChange={e => setMobileCenterIllustrationSize(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+                  <label className="block text-xs text-gray-600 font-medium">Width: {mobileCenterIllustrationSize}px
+                    <input type="range" min="100" max="1500" step="10" value={mobileCenterIllustrationSize} onChange={e => setMobileCenterIllustrationSize(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
                   </label>
                 </div>
                 <div className="space-y-3 pt-4 border-t border-gray-100">
