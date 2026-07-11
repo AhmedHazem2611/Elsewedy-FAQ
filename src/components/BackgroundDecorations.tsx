@@ -65,18 +65,17 @@ export function BackgroundDecorations({
       />
 
       {/* Layer 2.1: Top Left Tech Circuit Nodes (Red) */}
-      {!isMobile && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${circuitsL.top}%`,
-            left: `${circuitsL.left}%`,
-            width: `${circuitsL.size}px`,
-            height: `${circuitsL.size * (400/450)}px`,
-            opacity: circuitsL.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 450 400" className="w-full h-full text-[#E53935] scale-x-[-1]">
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${circuitsL.top}%`,
+          left: `${circuitsL.left}%`,
+          width: `${circuitsL.size * (isMobile ? 0.6 : 1)}px`,
+          height: `${circuitsL.size * (400/450) * (isMobile ? 0.6 : 1)}px`,
+          opacity: circuitsL.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 450 400" className="w-full h-full text-[#E53935] scale-x-[-1]">
             <g stroke="currentColor" fill="#fafafa" strokeWidth="1.5">
               {/* Top line */}
               <path d="M 450 50 L 350 50 L 320 80 L 200 80" fill="none" />
@@ -106,21 +105,19 @@ export function BackgroundDecorations({
             </g>
           </svg>
         </div>
-      )}
 
       {/* Layer 2.2: Top Right Tech Circuit Nodes (Teal) */}
-      {!isMobile && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${circuits.top}%`,
-            right: `${circuits.right}%`,
-            width: `${circuits.size}px`,
-            height: `${circuits.size * (400/450)}px`,
-            opacity: circuits.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 450 400" className="w-full h-full text-[#009688]">
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${circuits.top}%`,
+          right: `${circuits.right}%`,
+          width: `${circuits.size * (isMobile ? 0.6 : 1)}px`,
+          height: `${circuits.size * (400/450) * (isMobile ? 0.6 : 1)}px`,
+          opacity: circuits.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 450 400" className="w-full h-full text-[#009688]">
             <g stroke="currentColor" fill="#fafafa" strokeWidth="1.5">
               {/* Top line */}
               <path d="M 450 50 L 350 50 L 320 80 L 200 80" fill="none" />
@@ -150,7 +147,6 @@ export function BackgroundDecorations({
             </g>
           </svg>
         </div>
-      )}
 
       {/* Layer 2.3: Bottom Right Tech Circuit Nodes (Teal) */}
       {!isMobile && (
@@ -225,18 +221,17 @@ export function BackgroundDecorations({
       )}
 
       {/* Layer 2.6: Top Left Tech Circuit Dots (Red) */}
-      {!isBelow1200 && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${dotsL.top}%`,
-            left: `${dotsL.left}%`,
-            width: `${dotsL.size}px`,
-            height: `${dotsL.size}px`,
-            opacity: dotsL.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 400 400" className="w-full h-full">
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${dotsL.top}%`,
+          left: `${dotsL.left}%`,
+          width: `${dotsL.size * (isMobile ? 0.6 : 1)}px`,
+          height: `${dotsL.size * (isMobile ? 0.6 : 1)}px`,
+          opacity: dotsL.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 400 400" className="w-full h-full">
             <defs>
               <pattern id="circuit-dots-left" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
                 <circle cx="2" cy="2" r="1.5" fill="#E53935" />
@@ -253,21 +248,19 @@ export function BackgroundDecorations({
             <rect x="0" y="0" width="400" height="400" fill="url(#circuit-dots-left)" mask="url(#dots-mask-left)" />
           </svg>
         </div>
-      )}
 
       {/* Layer 2.7: Top Right Tech Circuit Dots (Teal) */}
-      {!isBelow1200 && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${dots.top}%`,
-            right: `${dots.right}%`,
-            width: `${dots.size}px`,
-            height: `${dots.size}px`,
-            opacity: dots.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 400 400" className="w-full h-full">
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${dots.top}%`,
+          right: `${dots.right}%`,
+          width: `${dots.size * (isMobile ? 0.6 : 1)}px`,
+          height: `${dots.size * (isMobile ? 0.6 : 1)}px`,
+          opacity: dots.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 400 400" className="w-full h-full">
             <defs>
               <pattern id="circuit-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
                 <circle cx="2" cy="2" r="1.5" fill="#009688" />
@@ -284,7 +277,6 @@ export function BackgroundDecorations({
             <rect x="0" y="0" width="400" height="400" fill="url(#circuit-dots)" mask="url(#dots-mask)" />
           </svg>
         </div>
-      )}
 
       {/* Layer 2.7: Bottom Right Tech Circuit Dots (Teal) */}
       {!isMobile && (
