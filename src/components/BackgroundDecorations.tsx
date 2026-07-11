@@ -69,8 +69,8 @@ export function BackgroundDecorations({
         style={{
           top: `${circuitsL.top}%`,
           left: `${circuitsL.left}%`,
-          width: `${circuitsL.size * (isMobile ? 0.6 : 1)}px`,
-          height: `${circuitsL.size * (400/450) * (isMobile ? 0.6 : 1)}px`,
+          width: `${circuitsL.size}px`,
+          height: `${circuitsL.size * (400/450)}px`,
           opacity: circuitsL.opacity / 100
         }}
       >
@@ -111,8 +111,8 @@ export function BackgroundDecorations({
         style={{
           top: `${circuits.top}%`,
           right: `${circuits.right}%`,
-          width: `${circuits.size * (isMobile ? 0.6 : 1)}px`,
-          height: `${circuits.size * (400/450) * (isMobile ? 0.6 : 1)}px`,
+          width: `${circuits.size}px`,
+          height: `${circuits.size * (400/450)}px`,
           opacity: circuits.opacity / 100
         }}
       >
@@ -225,8 +225,8 @@ export function BackgroundDecorations({
         style={{
           top: `${dotsL.top}%`,
           left: `${dotsL.left}%`,
-          width: `${dotsL.size * (isMobile ? 0.6 : 1)}px`,
-          height: `${dotsL.size * (isMobile ? 0.6 : 1)}px`,
+          width: `${dotsL.size}px`,
+          height: `${dotsL.size}px`,
           opacity: dotsL.opacity / 100
         }}
       >
@@ -254,8 +254,8 @@ export function BackgroundDecorations({
         style={{
           top: `${dots.top}%`,
           right: `${dots.right}%`,
-          width: `${dots.size * (isMobile ? 0.6 : 1)}px`,
-          height: `${dots.size * (isMobile ? 0.6 : 1)}px`,
+          width: `${dots.size}px`,
+          height: `${dots.size}px`,
           opacity: dots.opacity / 100
         }}
       >

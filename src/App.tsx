@@ -42,6 +42,12 @@ function App() {
   const [techCircuitsLeft, setTechCircuitsLeft] = useLocalStorage('techCircuitsLeft', { top: -2, left: 0, opacity: 15, size: 288 });
   const [techDotsLeft, setTechDotsLeft] = useLocalStorage('techDotsLeft', { top: -4, left: 10, opacity: 26, size: 326 });
   
+  const [mobileTechCircuits, setMobileTechCircuits] = useLocalStorage('mobileTechCircuits', { top: -1, right: 0, opacity: 9, size: 184 });
+  const [mobileTechDots, setMobileTechDots] = useLocalStorage('mobileTechDots', { top: -5, right: 11, opacity: 68, size: 170 });
+  const [mobileTechCircuitsLeft, setMobileTechCircuitsLeft] = useLocalStorage('mobileTechCircuitsLeft', { top: -2, left: 0, opacity: 15, size: 173 });
+  const [mobileTechDotsLeft, setMobileTechDotsLeft] = useLocalStorage('mobileTechDotsLeft', { top: -4, left: 10, opacity: 26, size: 195 });
+  
+
   const [techCircuitsBottomRight, setTechCircuitsBottomRight] = useLocalStorage('techCircuitsBottomRight', { top: 62, right: -1, opacity: 10, size: 430 });
   const [techDotsBottomRight, setTechDotsBottomRight] = useLocalStorage('techDotsBottomRight', { top: 80, right: 20, opacity: 30, size: 400 });
   const [techCircuitsBottomLeft, setTechCircuitsBottomLeft] = useLocalStorage('techCircuitsBottomLeft', { top: 69, left: 0, opacity: 10, size: 450 });
@@ -148,10 +154,10 @@ function App() {
         className="min-h-screen relative font-arabic overflow-x-hidden"
       >
       <BackgroundDecorations 
-        techCircuits={techCircuits} 
-        techDots={techDots} 
-        techCircuitsLeft={techCircuitsLeft} 
-        techDotsLeft={techDotsLeft} 
+        techCircuits={isMobileScreen ? mobileTechCircuits : techCircuits} 
+        techDots={isMobileScreen ? mobileTechDots : techDots} 
+        techCircuitsLeft={isMobileScreen ? mobileTechCircuitsLeft : techCircuitsLeft} 
+        techDotsLeft={isMobileScreen ? mobileTechDotsLeft : techDotsLeft} 
         techCircuitsBottomRight={techCircuitsBottomRight}
         techDotsBottomRight={techDotsBottomRight}
         techCircuitsBottomLeft={techCircuitsBottomLeft}
@@ -540,6 +546,66 @@ function App() {
                   <h4 className="font-semibold text-xs text-purple-600 uppercase tracking-wider">Background</h4>
                   <label className="block text-xs text-gray-600 font-medium">Size: {bgSize}%
                     <input type="range" min="10" max="300" step="1" value={bgSize} onChange={e => setBgSize(Number(e.target.value))} className="w-full mt-1 accent-purple-600" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-red-600 uppercase tracking-wider">Mobile Top Left Circuits</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Size: {mobileTechCircuitsLeft.size}px
+                    <input type="range" min="50" max="1000" value={mobileTechCircuitsLeft.size} onChange={e => setMobileTechCircuitsLeft({ ...mobileTechCircuitsLeft, size: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Top: {mobileTechCircuitsLeft.top}%
+                    <input type="range" min="-100" max="100" value={mobileTechCircuitsLeft.top} onChange={e => setMobileTechCircuitsLeft({ ...mobileTechCircuitsLeft, top: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Left: {mobileTechCircuitsLeft.left}%
+                    <input type="range" min="-100" max="100" value={mobileTechCircuitsLeft.left} onChange={e => setMobileTechCircuitsLeft({ ...mobileTechCircuitsLeft, left: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Opacity: {mobileTechCircuitsLeft.opacity}%
+                    <input type="range" min="0" max="100" value={mobileTechCircuitsLeft.opacity} onChange={e => setMobileTechCircuitsLeft({ ...mobileTechCircuitsLeft, opacity: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-red-600 uppercase tracking-wider">Mobile Top Left Dots</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Size: {mobileTechDotsLeft.size}px
+                    <input type="range" min="50" max="1000" value={mobileTechDotsLeft.size} onChange={e => setMobileTechDotsLeft({ ...mobileTechDotsLeft, size: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Top: {mobileTechDotsLeft.top}%
+                    <input type="range" min="-100" max="100" value={mobileTechDotsLeft.top} onChange={e => setMobileTechDotsLeft({ ...mobileTechDotsLeft, top: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Left: {mobileTechDotsLeft.left}%
+                    <input type="range" min="-100" max="100" value={mobileTechDotsLeft.left} onChange={e => setMobileTechDotsLeft({ ...mobileTechDotsLeft, left: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Opacity: {mobileTechDotsLeft.opacity}%
+                    <input type="range" min="0" max="100" value={mobileTechDotsLeft.opacity} onChange={e => setMobileTechDotsLeft({ ...mobileTechDotsLeft, opacity: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Mobile Top Right Circuits</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Size: {mobileTechCircuits.size}px
+                    <input type="range" min="50" max="1000" value={mobileTechCircuits.size} onChange={e => setMobileTechCircuits({ ...mobileTechCircuits, size: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Top: {mobileTechCircuits.top}%
+                    <input type="range" min="-100" max="100" value={mobileTechCircuits.top} onChange={e => setMobileTechCircuits({ ...mobileTechCircuits, top: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Right: {mobileTechCircuits.right}%
+                    <input type="range" min="-100" max="100" value={mobileTechCircuits.right} onChange={e => setMobileTechCircuits({ ...mobileTechCircuits, right: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Opacity: {mobileTechCircuits.opacity}%
+                    <input type="range" min="0" max="100" value={mobileTechCircuits.opacity} onChange={e => setMobileTechCircuits({ ...mobileTechCircuits, opacity: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Mobile Top Right Dots</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Size: {mobileTechDots.size}px
+                    <input type="range" min="50" max="1000" value={mobileTechDots.size} onChange={e => setMobileTechDots({ ...mobileTechDots, size: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Top: {mobileTechDots.top}%
+                    <input type="range" min="-100" max="100" value={mobileTechDots.top} onChange={e => setMobileTechDots({ ...mobileTechDots, top: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Right: {mobileTechDots.right}%
+                    <input type="range" min="-100" max="100" value={mobileTechDots.right} onChange={e => setMobileTechDots({ ...mobileTechDots, right: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Opacity: {mobileTechDots.opacity}%
+                    <input type="range" min="0" max="100" value={mobileTechDots.opacity} onChange={e => setMobileTechDots({ ...mobileTechDots, opacity: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
                   </label>
                 </div>
               </>
