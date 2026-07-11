@@ -64,6 +64,10 @@ function App() {
   const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 96);
   const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 16);
   const [mobileHeaderPadding, setMobileHeaderPadding] = useLocalStorage('mobileHeaderPadding', 1.75);
+  const [heroTopMargin, setHeroTopMargin] = useLocalStorage('heroTopMargin', 2);
+  const [heroBottomMargin, setHeroBottomMargin] = useLocalStorage('heroBottomMargin', 4);
+  const [mobileHeroTopMargin, setMobileHeroTopMargin] = useLocalStorage('mobileHeroTopMargin', 2);
+  const [mobileHeroBottomMargin, setMobileHeroBottomMargin] = useLocalStorage('mobileHeroBottomMargin', 4);
   const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 3.5);
   const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.5);
   const [isMobileScreen, setIsMobileScreen] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
@@ -197,7 +201,10 @@ function App() {
             </div>
           </div>
 
-          <Hero />
+          <Hero 
+            marginTop={isMobileScreen ? mobileHeroTopMargin : heroTopMargin}
+            marginBottom={isMobileScreen ? mobileHeroBottomMargin : heroBottomMargin}
+          />
 
           <div className="w-full relative flex justify-center mt-4 z-0">
             <LeftIllustration settings={leftSettings} />
@@ -469,6 +476,16 @@ function App() {
             </div>
 
             <div className="space-y-3 pt-4 border-t border-gray-100">
+              <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Hero Text Spacing</h4>
+              <label className="block text-xs text-gray-600 font-medium">Top Margin (from Illustration): {heroTopMargin}rem
+                <input type="range" min="-10" max="20" step="0.5" value={heroTopMargin} onChange={e => setHeroTopMargin(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+              </label>
+              <label className="block text-xs text-gray-600 font-medium">Bottom Margin (to Questions): {heroBottomMargin}rem
+                <input type="range" min="-10" max="20" step="0.5" value={heroBottomMargin} onChange={e => setHeroBottomMargin(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+              </label>
+            </div>
+
+            <div className="space-y-3 pt-4 border-t border-gray-100">
                   <h4 className="font-semibold text-xs text-purple-600 uppercase tracking-wider">Background</h4>
                   <label className="block text-xs text-gray-600 font-medium">Size: {bgSize}%
                     <input type="range" min="10" max="300" step="1" value={bgSize} onChange={e => setBgSize(Number(e.target.value))} className="w-full mt-1 accent-purple-600" />
@@ -508,6 +525,15 @@ function App() {
                   <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Mobile Center Illustration</h4>
                   <label className="block text-xs text-gray-600 font-medium">Width: {mobileCenterIllustrationSize}vw
                     <input type="range" min="30" max="300" step="1" value={mobileCenterIllustrationSize} onChange={e => setMobileCenterIllustrationSize(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+                  </label>
+                </div>
+                <div className="space-y-3 pt-4 border-t border-gray-100">
+                  <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Mobile Hero Text Spacing</h4>
+                  <label className="block text-xs text-gray-600 font-medium">Top Margin: {mobileHeroTopMargin}rem
+                    <input type="range" min="-10" max="20" step="0.5" value={mobileHeroTopMargin} onChange={e => setMobileHeroTopMargin(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+                  </label>
+                  <label className="block text-xs text-gray-600 font-medium">Bottom Margin: {mobileHeroBottomMargin}rem
+                    <input type="range" min="-10" max="20" step="0.5" value={mobileHeroBottomMargin} onChange={e => setMobileHeroBottomMargin(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
                   </label>
                 </div>
                 <div className="space-y-3 pt-4 border-t border-gray-100">

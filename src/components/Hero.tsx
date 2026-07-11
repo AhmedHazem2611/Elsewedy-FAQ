@@ -1,8 +1,19 @@
 import { motion } from 'framer-motion';
 
-export function Hero() {
+interface HeroProps {
+  marginTop?: number;
+  marginBottom?: number;
+}
+
+export function Hero({ marginTop, marginBottom }: HeroProps) {
   return (
-    <section className="flex flex-col items-center text-center mt-8 mb-16 px-4 relative z-10">
+    <section 
+      className="flex flex-col items-center text-center px-4 relative z-10"
+      style={{
+        marginTop: marginTop !== undefined ? `${marginTop}rem` : '2rem',
+        marginBottom: marginBottom !== undefined ? `${marginBottom}rem` : '4rem'
+      }}
+    >
       <style>{`
         @keyframes shine {
           to {
