@@ -57,14 +57,14 @@ function App() {
   const [lineHeight, setLineHeight] = useLocalStorage('lineHeight', 5);
   const [lineGap, setLineGap] = useLocalStorage('lineGap', 0.5);
   const [heroTopGap, setHeroTopGap] = useLocalStorage('heroTopGap', 0);
-  const [bgSize, setBgSize] = useLocalStorage('bgSize', 100);
+  const [bgSize, setBgSize] = useLocalStorage('bgSize', 77);
 
-  const [mobileCenterIllustrationSize, setMobileCenterIllustrationSize] = useLocalStorage('mobileCenterIllustrationSize', 100);
-  const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 7, elsewedy: 3, appliedTech: 7 });
-  const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 72);
-  const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 16);
+  const [mobileCenterIllustrationSize, setMobileCenterIllustrationSize] = useLocalStorage('mobileCenterIllustrationSize', 150);
+  const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 10, elsewedy: 2.5, appliedTech: 8.5 });
+  const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 109);
+  const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 23);
   const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 4);
-  const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.2);
+  const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.5);
   const [isMobileScreen, setIsMobileScreen] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
 
   useEffect(() => {
