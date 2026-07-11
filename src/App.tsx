@@ -59,7 +59,7 @@ function App() {
   const [heroTopGap, setHeroTopGap] = useLocalStorage('heroTopGap', 0);
   const [bgSize, setBgSize] = useLocalStorage('bgSize', 77);
 
-  const [mobileCenterIllustrationSize, setMobileCenterIllustrationSize] = useLocalStorage('mobileCenterIllustrationSize', 150);
+  const [mobileCenterIllustrationSize, setMobileCenterIllustrationSize] = useLocalStorage('mobileCenterIllustrationSize', 370);
   const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 8, elsewedy: 2, appliedTech: 6.5 });
   const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 96);
   const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 16);
