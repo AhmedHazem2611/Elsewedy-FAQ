@@ -66,6 +66,8 @@ const [scale, setScale] = useState(1);
   
   const baseHeight = headerHeight !== undefined ? headerHeight : 96;
   const currentHeight = isMobile ? (mobileHeaderHeight !== undefined ? mobileHeaderHeight : baseHeight * 0.75) : baseHeight;
+  const validHeight = Math.max(0, currentHeight);
+  const extraNegativeMargin = Math.min(0, currentHeight);
 
   const ministrySizeNum = logoSizes ? logoSizes.ministry : 10.5;
   const ministrySize = isMobile ? `${mobileLogoSizes ? mobileLogoSizes.ministry : ministrySizeNum * 0.65}rem` : `${ministrySizeNum}rem`;
@@ -84,7 +86,7 @@ const [scale, setScale] = useState(1);
     >
       <div 
         className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[40px] flex items-center justify-center mt-6 w-max mx-auto transform-origin-top" 
-        style={{ zoom: scale < 1 ? scale : undefined, marginTop: actualMargin, marginBottom: actualMargin, gap: dividerGap, height: `${currentHeight}px`, paddingLeft: `${currentPaddingX}px`, paddingRight: `${currentPaddingX}px` }}
+        style={{ zoom: scale < 1 ? scale : undefined, marginTop: actualMargin, marginBottom: `calc(${actualMargin} + ${extraNegativeMargin}px)`, gap: dividerGap, height: `${validHeight}px`, paddingLeft: `${currentPaddingX}px`, paddingRight: `${currentPaddingX}px` }}
       >
         <div className="flex items-center justify-center h-0">
           <img 

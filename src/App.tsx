@@ -435,7 +435,7 @@ function App() {
             <div className="space-y-3 pt-4 border-t border-gray-100">
               <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Header Logos (vh)</h4>
               <label className="block text-xs text-gray-600 font-medium">Bar Height: {headerHeight}px
-                <input type="range" min="40" max="200" step="1" value={headerHeight} onChange={e => setHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                <input type="range" min="-200" max="200" step="1" value={headerHeight} onChange={e => setHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
               </label>
               <label className="block text-xs text-gray-600 font-medium">Bar Padding (Width): {headerPaddingX}px
                 <input type="range" min="0" max="200" step="1" value={headerPaddingX} onChange={e => setHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
@@ -475,7 +475,7 @@ function App() {
                 <div className="space-y-3">
                   <h4 className="font-semibold text-xs text-blue-600 uppercase tracking-wider">Mobile Header Logos (px/rem)</h4>
                   <label className="block text-xs text-gray-600 font-medium">Bar Height: {mobileHeaderHeight}px
-                    <input type="range" min="40" max="150" step="1" value={mobileHeaderHeight} onChange={e => setMobileHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                    <input type="range" min="-200" max="150" step="1" value={mobileHeaderHeight} onChange={e => setMobileHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
                   <label className="block text-xs text-gray-600 font-medium">Bar Padding: {mobileHeaderPaddingX}px
                     <input type="range" min="0" max="100" step="1" value={mobileHeaderPaddingX} onChange={e => setMobileHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
