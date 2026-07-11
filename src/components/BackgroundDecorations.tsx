@@ -49,7 +49,7 @@ export function BackgroundDecorations({
   const cDots2 = centerDots2 || { top: 55, left: 65, opacity: 20, size: 400 };
 
   return (
-    <div className="fixed inset-0 w-full h-full pointer-events-none z-0 overflow-hidden bg-[#fafafa]">
+    <div className="absolute top-0 left-0 w-full h-screen pointer-events-none z-0 overflow-visible">
       
       {/* Layer 1: Ambient Light Gradients */}
       <div 
