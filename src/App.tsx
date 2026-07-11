@@ -499,7 +499,7 @@ function App() {
                 <div className="space-y-3 pt-4 border-t border-gray-100">
                   <h4 className="font-semibold text-xs text-red-500 uppercase tracking-wider">Mobile Center Illustration</h4>
                   <label className="block text-xs text-gray-600 font-medium">Width: {mobileCenterIllustrationSize}vw
-                    <input type="range" min="30" max="150" step="1" value={mobileCenterIllustrationSize} onChange={e => setMobileCenterIllustrationSize(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
+                    <input type="range" min="30" max="300" step="1" value={mobileCenterIllustrationSize} onChange={e => setMobileCenterIllustrationSize(Number(e.target.value))} className="w-full mt-1 accent-red-500" />
                   </label>
                 </div>
                 <div className="space-y-3 pt-4 border-t border-gray-100">
