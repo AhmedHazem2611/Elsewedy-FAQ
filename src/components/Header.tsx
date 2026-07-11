@@ -63,6 +63,8 @@ const [scale, setScale] = useState(1);
 
   const basePaddingX = headerPaddingX !== undefined ? headerPaddingX : 48;
   const currentPaddingX = isMobile ? (mobileHeaderPaddingX !== undefined ? mobileHeaderPaddingX : basePaddingX * 0.4) : basePaddingX;
+  const validPaddingX = Math.max(0, currentPaddingX);
+  const extraNegativePaddingX = Math.min(0, currentPaddingX);
   
   const baseHeight = headerHeight !== undefined ? headerHeight : 96;
   const currentHeight = isMobile ? (mobileHeaderHeight !== undefined ? mobileHeaderHeight : baseHeight * 0.75) : baseHeight;
@@ -86,9 +88,9 @@ const [scale, setScale] = useState(1);
     >
       <div 
         className="bg-white shadow-[0_8px_30px_rgb(0,0,0,0.08)] rounded-[40px] flex items-center justify-center mt-6 w-max mx-auto transform-origin-top" 
-        style={{ zoom: scale < 1 ? scale : undefined, marginTop: actualMargin, marginBottom: `calc(${actualMargin} + ${extraNegativeMargin}px)`, gap: dividerGap, height: `${validHeight}px`, paddingLeft: `${currentPaddingX}px`, paddingRight: `${currentPaddingX}px` }}
+        style={{ zoom: scale < 1 ? scale : undefined, marginTop: actualMargin, marginBottom: `calc(${actualMargin} + ${extraNegativeMargin}px)`, gap: dividerGap, height: `${validHeight}px`, paddingLeft: `${validPaddingX}px`, paddingRight: `${validPaddingX}px` }}
       >
-        <div className="flex items-center justify-center h-0">
+        <div className="flex items-center justify-center h-0" style={{ marginLeft: `${extraNegativePaddingX}px` }}>
           <img 
             src={elsewedyLogo} 
             alt="Elsewedy Logo" 
@@ -110,7 +112,7 @@ const [scale, setScale] = useState(1);
 
         <div className="w-px bg-gray-200 shrink-0" style={{ height: dividerHeight }}></div>
 
-        <div className="flex items-center justify-center h-0">
+        <div className="flex items-center justify-center h-0" style={{ marginRight: `${extraNegativePaddingX}px` }}>
           <img 
             src={appliedTechLogo} 
             alt="Applied Technology Logo" 

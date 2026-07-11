@@ -438,7 +438,7 @@ function App() {
                 <input type="range" min="-200" max="200" step="1" value={headerHeight} onChange={e => setHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
               </label>
               <label className="block text-xs text-gray-600 font-medium">Bar Padding (Width): {headerPaddingX}px
-                <input type="range" min="0" max="200" step="1" value={headerPaddingX} onChange={e => setHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                <input type="range" min="-200" max="200" step="1" value={headerPaddingX} onChange={e => setHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
               </label>
               <label className="block text-xs text-gray-600 font-medium">Padding: {headerPadding}rem
                 <input type="range" min="-2" max="6" step="0.25" value={headerPadding} onChange={e => setHeaderPadding(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
@@ -478,7 +478,7 @@ function App() {
                     <input type="range" min="-200" max="150" step="1" value={mobileHeaderHeight} onChange={e => setMobileHeaderHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
                   <label className="block text-xs text-gray-600 font-medium">Bar Padding: {mobileHeaderPaddingX}px
-                    <input type="range" min="0" max="100" step="1" value={mobileHeaderPaddingX} onChange={e => setMobileHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
+                    <input type="range" min="-200" max="100" step="1" value={mobileHeaderPaddingX} onChange={e => setMobileHeaderPaddingX(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
                   </label>
                   <label className="block text-xs text-gray-600 font-medium">Lines Height: {mobileLineHeight}rem
                     <input type="range" min="1" max="12" step="0.5" value={mobileLineHeight} onChange={e => setMobileLineHeight(Number(e.target.value))} className="w-full mt-1 accent-blue-600" />
