@@ -173,24 +173,26 @@ function App() {
         <div className="flex-1 flex flex-col items-center pb-24" style={{ paddingTop: `${heroTopGap}rem` }}>
 
           {/* Centered Right Illustration for smaller screens */}
-          <div className="lg:hidden shrink-0 mx-auto mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ width: `${mobileCenterIllustrationSize}vw` }}>
-            <div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] mix-blend-multiply pointer-events-none"
-              style={{
-                background: 'radial-gradient(circle, rgba(192, 154, 77, 0.08) 0%, rgba(0, 130, 130, 0.04) 40%, transparent 70%)',
-                filter: 'blur(40px)',
-                zIndex: -1
-              }}
-            />
-            <img 
-              src={educationImage} 
-              alt="Education Illustration" 
-              className="w-full h-auto object-contain drop-shadow-xl" 
-              style={{
-                WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
-                maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)'
-              }}
-            />
+          <div className="lg:hidden w-full flex justify-center overflow-visible mb-2 relative z-10">
+            <div className="shrink-0 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ width: `${mobileCenterIllustrationSize}vw` }}>
+              <div
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] mix-blend-multiply pointer-events-none"
+                style={{
+                  background: 'radial-gradient(circle, rgba(192, 154, 77, 0.08) 0%, rgba(0, 130, 130, 0.04) 40%, transparent 70%)',
+                  filter: 'blur(40px)',
+                  zIndex: -1
+                }}
+              />
+              <img 
+                src={educationImage} 
+                alt="Education Illustration" 
+                className="w-full h-auto object-contain drop-shadow-xl" 
+                style={{
+                  WebkitMaskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)',
+                  maskImage: 'linear-gradient(to bottom, rgba(0,0,0,1) 85%, rgba(0,0,0,0) 100%)'
+                }}
+              />
+            </div>
           </div>
 
           <Hero />
