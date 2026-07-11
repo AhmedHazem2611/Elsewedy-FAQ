@@ -42,10 +42,10 @@ function App() {
   const [techCircuitsLeft, setTechCircuitsLeft] = useLocalStorage('techCircuitsLeft', { top: -2, left: 0, opacity: 15, size: 288 });
   const [techDotsLeft, setTechDotsLeft] = useLocalStorage('techDotsLeft', { top: -4, left: 10, opacity: 26, size: 326 });
   
-  const [mobileTechCircuits, setMobileTechCircuits] = useLocalStorage('mobileTechCircuits', { top: -1, right: 0, opacity: 9, size: 184 });
-  const [mobileTechDots, setMobileTechDots] = useLocalStorage('mobileTechDots', { top: -5, right: 11, opacity: 68, size: 170 });
-  const [mobileTechCircuitsLeft, setMobileTechCircuitsLeft] = useLocalStorage('mobileTechCircuitsLeft', { top: -2, left: 0, opacity: 15, size: 173 });
-  const [mobileTechDotsLeft, setMobileTechDotsLeft] = useLocalStorage('mobileTechDotsLeft', { top: -4, left: 10, opacity: 26, size: 195 });
+  const [mobileTechCircuits, setMobileTechCircuits] = useLocalStorage('mobileTechCircuits', { top: 12, right: -3, opacity: 12, size: 273 });
+  const [mobileTechDots, setMobileTechDots] = useLocalStorage('mobileTechDots', { top: 49, right: -1, opacity: 56, size: 216 });
+  const [mobileTechCircuitsLeft, setMobileTechCircuitsLeft] = useLocalStorage('mobileTechCircuitsLeft', { top: 13, left: 0, opacity: 15, size: 222 });
+  const [mobileTechDotsLeft, setMobileTechDotsLeft] = useLocalStorage('mobileTechDotsLeft', { top: 49, left: -4, opacity: 56, size: 218 });
   
 
   const [techCircuitsBottomRight, setTechCircuitsBottomRight] = useLocalStorage('techCircuitsBottomRight', { top: 62, right: -1, opacity: 10, size: 430 });
