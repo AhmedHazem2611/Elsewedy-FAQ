@@ -173,7 +173,7 @@ function App() {
         <div className="flex-1 flex flex-col items-center pb-24" style={{ paddingTop: `${heroTopGap}rem` }}>
 
           {/* Centered Right Illustration for smaller screens */}
-          <div className="lg:hidden w-full mx-auto mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ maxWidth: `${mobileCenterIllustrationSize}vw` }}>
+          <div className="lg:hidden mx-auto mb-2 flex justify-center relative z-10 hover:-translate-y-2 transition-transform duration-500 cursor-pointer" style={{ width: `${mobileCenterIllustrationSize}vw` }}>
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[140%] h-[140%] mix-blend-multiply pointer-events-none"
               style={{
