@@ -225,7 +225,7 @@ function App() {
         <div 
           className="scrollable-panel fixed z-50 bg-white/90 backdrop-blur p-4 rounded-xl shadow-2xl border border-gray-200 text-sm w-64 font-sans max-h-[80vh] overflow-y-scroll overscroll-contain pointer-events-auto" 
           dir="ltr"
-          style={{ top: `${panelPos.y}px`, left: `${panelPos.x}px` }}
+          style={{ top: `${Math.max(10, Math.min(window.innerHeight - 50, panelPos.y))}px`, left: `${Math.max(0, Math.min(window.innerWidth - 50, panelPos.x))}px` }}
         >
           <style>{`
             .scrollable-panel::-webkit-scrollbar {
