@@ -60,10 +60,10 @@ function App() {
   const [bgSize, setBgSize] = useLocalStorage('bgSize', 77);
 
   const [mobileCenterIllustrationSize, setMobileCenterIllustrationSize] = useLocalStorage('mobileCenterIllustrationSize', 150);
-  const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 10, elsewedy: 2.5, appliedTech: 8.5 });
-  const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 109);
-  const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 23);
-  const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 4);
+  const [mobileLogoSizes, setMobileLogoSizes] = useLocalStorage('mobileLogoSizes', { ministry: 8, elsewedy: 2, appliedTech: 6.5 });
+  const [mobileHeaderHeight, setMobileHeaderHeight] = useLocalStorage('mobileHeaderHeight', 96);
+  const [mobileHeaderPaddingX, setMobileHeaderPaddingX] = useLocalStorage('mobileHeaderPaddingX', 16);
+  const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 3.5);
   const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.5);
   const [isMobileScreen, setIsMobileScreen] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
 
