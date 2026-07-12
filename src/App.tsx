@@ -6,32 +6,11 @@ import { FAQSection } from './components/FAQSection';
 import { BackgroundDecorations } from './components/BackgroundDecorations';
 import { LoadingScreen } from './components/LoadingScreen';
 import { LeftIllustration, RightIllustration, educationImage } from './components/Illustrations';
+import { FAQEditor } from './components/FAQEditor';
+
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 // Custom hook for auto-saving state to localStorage
-function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T | ((val: T) => T)) => void] {
-  const [storedValue, setStoredValue] = useState<T>(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.warn(error);
-      return initialValue;
-    }
-  });
-
-  const setValue = (value: T | ((val: T) => T)) => {
-    try {
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.warn(error);
-    }
-  };
-
-  return [storedValue, setValue];
-}
-
 const ENABLE_DEV_TOOLS = true;
 
 function App() {
@@ -77,6 +56,8 @@ function App() {
   const [mobileLineHeight, setMobileLineHeight] = useLocalStorage('mobileLineHeight', 3.5);
   const [mobileLineGap, setMobileLineGap] = useLocalStorage('mobileLineGap', 0.5);
   const [isMobileScreen, setIsMobileScreen] = useState(typeof window !== 'undefined' ? window.innerWidth < 1024 : false);
+
+  const [showFAQEditor, setShowFAQEditor] = useState(false);
 
   useEffect(() => {
     const handleScreenResize = () => {
@@ -145,6 +126,7 @@ function App() {
     <>
       <AnimatePresence>
         {!appReady && <LoadingScreen key="splash" />}
+        {showFAQEditor && <FAQEditor key="faq-editor" onClose={() => setShowFAQEditor(false)} />}
       </AnimatePresence>
 
       <motion.main 
@@ -259,6 +241,15 @@ function App() {
               <button onClick={handleManualSave} className="bg-blue-600 hover:bg-blue-700 text-white px-2 py-1 rounded text-xs font-bold transition-colors">Save</button>
               <button onClick={() => setShowControls(false)} className="text-gray-400 hover:text-gray-800 text-xs font-bold ml-2">X</button>
             </div>
+          </div>
+
+          <div className="p-3 border-b border-gray-200">
+            <button 
+              onClick={() => setShowFAQEditor(true)}
+              className="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-lg shadow transition-colors"
+            >
+              Edit FAQs
+            </button>
           </div>
 
           <div className="space-y-6">
