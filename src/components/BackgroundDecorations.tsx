@@ -64,92 +64,88 @@ export function BackgroundDecorations({
       />
 
       {/* Layer 2.1: Top Left Tech Circuit Nodes (Red) */}
-      {isMobile && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${circuitsL.top}%`,
-            left: `${circuitsL.left}%`,
-            width: `${circuitsL.size}px`,
-            height: `${circuitsL.size * (400/450)}px`,
-            opacity: circuitsL.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 450 400" className="w-full h-full text-[#E53935] scale-x-[-1]">
-              <g stroke="currentColor" fill="#fafafa" strokeWidth="1.5">
-                {/* Top line */}
-                <path d="M 450 50 L 350 50 L 320 80 L 200 80" fill="none" />
-                <circle cx="350" cy="50" r="3" />
-                <circle cx="196" cy="80" r="4" />
-                
-                {/* Mid line 1 */}
-                <path d="M 450 120 L 300 120 L 270 150 L 170 150" fill="none" />
-                <circle cx="300" cy="120" r="3" />
-                <circle cx="166" cy="150" r="5" />
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${circuitsL.top}%`,
+          left: `${circuitsL.left}%`,
+          width: `${circuitsL.size}px`,
+          height: `${circuitsL.size * (400/450)}px`,
+          opacity: circuitsL.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 450 400" className="w-full h-full text-[#E53935] scale-x-[-1]">
+            <g stroke="currentColor" fill="#fafafa" strokeWidth="1.5">
+              {/* Top line */}
+              <path d="M 450 50 L 350 50 L 320 80 L 200 80" fill="none" />
+              <circle cx="350" cy="50" r="3" />
+              <circle cx="196" cy="80" r="4" />
+              
+              {/* Mid line 1 */}
+              <path d="M 450 120 L 300 120 L 270 150 L 170 150" fill="none" />
+              <circle cx="300" cy="120" r="3" />
+              <circle cx="166" cy="150" r="5" />
 
-                {/* Main straight line */}
-                <path d="M 450 190 L 150 190" fill="none" />
-                <circle cx="330" cy="190" r="3" />
-                <circle cx="250" cy="190" r="3" />
-                <circle cx="144" cy="190" r="6" strokeWidth="2" />
-                
-                {/* Lower angled line */}
-                <path d="M 450 250 L 370 250 L 330 290 L 230 290" fill="none" />
-                <circle cx="330" cy="290" r="3" />
-                <circle cx="226" cy="290" r="4" />
-                
-                {/* Bottom line */}
-                <path d="M 450 330 L 310 330 L 270 370 L 200 370" fill="none" />
-                <circle cx="310" cy="330" r="3" />
-                <circle cx="196" cy="370" r="4" />
-              </g>
-            </svg>
-          </div>
-      )}
+              {/* Main straight line */}
+              <path d="M 450 190 L 150 190" fill="none" />
+              <circle cx="330" cy="190" r="3" />
+              <circle cx="250" cy="190" r="3" />
+              <circle cx="144" cy="190" r="6" strokeWidth="2" />
+              
+              {/* Lower angled line */}
+              <path d="M 450 250 L 370 250 L 330 290 L 230 290" fill="none" />
+              <circle cx="330" cy="290" r="3" />
+              <circle cx="226" cy="290" r="4" />
+              
+              {/* Bottom line */}
+              <path d="M 450 330 L 310 330 L 270 370 L 200 370" fill="none" />
+              <circle cx="310" cy="330" r="3" />
+              <circle cx="196" cy="370" r="4" />
+            </g>
+          </svg>
+        </div>
 
       {/* Layer 2.2: Top Right Tech Circuit Nodes (Teal) */}
-      {isMobile && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${circuits.top}%`,
-            right: `${circuits.right}%`,
-            width: `${circuits.size}px`,
-            height: `${circuits.size * (400/450)}px`,
-            opacity: circuits.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 450 400" className="w-full h-full text-[#009688]">
-              <g stroke="currentColor" fill="#fafafa" strokeWidth="1.5">
-                {/* Top line */}
-                <path d="M 450 50 L 350 50 L 320 80 L 200 80" fill="none" />
-                <circle cx="350" cy="50" r="3" />
-                <circle cx="196" cy="80" r="4" />
-                
-                {/* Mid line 1 */}
-                <path d="M 450 120 L 300 120 L 270 150 L 170 150" fill="none" />
-                <circle cx="300" cy="120" r="3" />
-                <circle cx="166" cy="150" r="5" />
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${circuits.top}%`,
+          right: `${circuits.right}%`,
+          width: `${circuits.size}px`,
+          height: `${circuits.size * (400/450)}px`,
+          opacity: circuits.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 450 400" className="w-full h-full text-[#009688]">
+            <g stroke="currentColor" fill="#fafafa" strokeWidth="1.5">
+              {/* Top line */}
+              <path d="M 450 50 L 350 50 L 320 80 L 200 80" fill="none" />
+              <circle cx="350" cy="50" r="3" />
+              <circle cx="196" cy="80" r="4" />
+              
+              {/* Mid line 1 */}
+              <path d="M 450 120 L 300 120 L 270 150 L 170 150" fill="none" />
+              <circle cx="300" cy="120" r="3" />
+              <circle cx="166" cy="150" r="5" />
 
-                {/* Main straight line */}
-                <path d="M 450 190 L 150 190" fill="none" />
-                <circle cx="330" cy="190" r="3" />
-                <circle cx="250" cy="190" r="3" />
-                <circle cx="144" cy="190" r="6" strokeWidth="2" />
-                
-                {/* Lower angled line */}
-                <path d="M 450 250 L 370 250 L 330 290 L 230 290" fill="none" />
-                <circle cx="330" cy="290" r="3" />
-                <circle cx="226" cy="290" r="4" />
-                
-                {/* Bottom line */}
-                <path d="M 450 330 L 310 330 L 270 370 L 200 370" fill="none" />
-                <circle cx="310" cy="330" r="3" />
-                <circle cx="196" cy="370" r="4" />
-              </g>
-            </svg>
-          </div>
-      )}
+              {/* Main straight line */}
+              <path d="M 450 190 L 150 190" fill="none" />
+              <circle cx="330" cy="190" r="3" />
+              <circle cx="250" cy="190" r="3" />
+              <circle cx="144" cy="190" r="6" strokeWidth="2" />
+              
+              {/* Lower angled line */}
+              <path d="M 450 250 L 370 250 L 330 290 L 230 290" fill="none" />
+              <circle cx="330" cy="290" r="3" />
+              <circle cx="226" cy="290" r="4" />
+              
+              {/* Bottom line */}
+              <path d="M 450 330 L 310 330 L 270 370 L 200 370" fill="none" />
+              <circle cx="310" cy="330" r="3" />
+              <circle cx="196" cy="370" r="4" />
+            </g>
+          </svg>
+        </div>
 
       {/* Layer 2.3: Bottom Right Tech Circuit Nodes (Teal) */}
       {!isMobile && (
@@ -224,66 +220,62 @@ export function BackgroundDecorations({
       )}
 
       {/* Layer 2.6: Top Left Tech Circuit Dots (Red) */}
-      {isMobile && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${dotsL.top}%`,
-            left: `${dotsL.left}%`,
-            width: `${dotsL.size}px`,
-            height: `${dotsL.size}px`,
-            opacity: dotsL.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 400 400" className="w-full h-full">
-              <defs>
-                <pattern id="circuit-dots-left" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <circle cx="2" cy="2" r="1.5" fill="#E53935" />
-                </pattern>
-                <radialGradient id="circuit-dots-mask-left" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="white" stopOpacity="1" />
-                  <stop offset="60%" stopColor="white" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="white" stopOpacity="0" />
-                </radialGradient>
-                <mask id="dots-mask-left">
-                  <circle cx="200" cy="200" r="200" fill="url(#circuit-dots-mask-left)" />
-                </mask>
-              </defs>
-              <rect x="0" y="0" width="400" height="400" fill="url(#circuit-dots-left)" mask="url(#dots-mask-left)" />
-            </svg>
-          </div>
-      )}
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${dotsL.top}%`,
+          left: `${dotsL.left}%`,
+          width: `${dotsL.size}px`,
+          height: `${dotsL.size}px`,
+          opacity: dotsL.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 400 400" className="w-full h-full">
+            <defs>
+              <pattern id="circuit-dots-left" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="#E53935" />
+              </pattern>
+              <radialGradient id="circuit-dots-mask-left" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="white" stopOpacity="1" />
+                <stop offset="60%" stopColor="white" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="white" stopOpacity="0" />
+              </radialGradient>
+              <mask id="dots-mask-left">
+                <circle cx="200" cy="200" r="200" fill="url(#circuit-dots-mask-left)" />
+              </mask>
+            </defs>
+            <rect x="0" y="0" width="400" height="400" fill="url(#circuit-dots-left)" mask="url(#dots-mask-left)" />
+          </svg>
+        </div>
 
       {/* Layer 2.7: Top Right Tech Circuit Dots (Teal) */}
-      {isMobile && (
-        <div 
-          className="absolute pointer-events-none z-0"
-          style={{
-            top: `${dots.top}%`,
-            right: `${dots.right}%`,
-            width: `${dots.size}px`,
-            height: `${dots.size}px`,
-            opacity: dots.opacity / 100
-          }}
-        >
-          <svg viewBox="0 0 400 400" className="w-full h-full">
-              <defs>
-                <pattern id="circuit-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                  <circle cx="2" cy="2" r="1.5" fill="#009688" />
-                </pattern>
-                <radialGradient id="circuit-dots-mask" cx="50%" cy="50%" r="50%">
-                  <stop offset="0%" stopColor="white" stopOpacity="1" />
-                  <stop offset="60%" stopColor="white" stopOpacity="0.8" />
-                  <stop offset="100%" stopColor="white" stopOpacity="0" />
-                </radialGradient>
-                <mask id="dots-mask">
-                  <circle cx="200" cy="200" r="200" fill="url(#circuit-dots-mask)" />
-                </mask>
-              </defs>
-              <rect x="0" y="0" width="400" height="400" fill="url(#circuit-dots)" mask="url(#dots-mask)" />
-            </svg>
-          </div>
-      )}
+      <div 
+        className="absolute pointer-events-none z-0"
+        style={{
+          top: `${dots.top}%`,
+          right: `${dots.right}%`,
+          width: `${dots.size}px`,
+          height: `${dots.size}px`,
+          opacity: dots.opacity / 100
+        }}
+      >
+        <svg viewBox="0 0 400 400" className="w-full h-full">
+            <defs>
+              <pattern id="circuit-dots" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
+                <circle cx="2" cy="2" r="1.5" fill="#009688" />
+              </pattern>
+              <radialGradient id="circuit-dots-mask" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="white" stopOpacity="1" />
+                <stop offset="60%" stopColor="white" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="white" stopOpacity="0" />
+              </radialGradient>
+              <mask id="dots-mask">
+                <circle cx="200" cy="200" r="200" fill="url(#circuit-dots-mask)" />
+              </mask>
+            </defs>
+            <rect x="0" y="0" width="400" height="400" fill="url(#circuit-dots)" mask="url(#dots-mask)" />
+          </svg>
+        </div>
 
       {/* Layer 2.7: Bottom Right Tech Circuit Dots (Teal) */}
       {!isMobile && (
