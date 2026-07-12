@@ -290,69 +290,7 @@ function App() {
               </label>
             </div>
 
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <h4 className="font-semibold text-xs text-red-600 uppercase tracking-wider">Top Left Circuits</h4>
-              <label className="block text-xs text-gray-600 font-medium">Size: {techCircuitsLeft.size}px
-                <input type="range" min="100" max="1000" value={techCircuitsLeft.size} onChange={e => setTechCircuitsLeft({ ...techCircuitsLeft, size: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Top: {techCircuitsLeft.top}%
-                <input type="range" min="-100" max="100" value={techCircuitsLeft.top} onChange={e => setTechCircuitsLeft({ ...techCircuitsLeft, top: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Left: {techCircuitsLeft.left}%
-                <input type="range" min="-100" max="100" value={techCircuitsLeft.left} onChange={e => setTechCircuitsLeft({ ...techCircuitsLeft, left: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Opacity: {techCircuitsLeft.opacity}%
-                <input type="range" min="0" max="100" value={techCircuitsLeft.opacity} onChange={e => setTechCircuitsLeft({ ...techCircuitsLeft, opacity: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-            </div>
 
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <h4 className="font-semibold text-xs text-red-600 uppercase tracking-wider">Top Left Circuit Dots</h4>
-              <label className="block text-xs text-gray-600 font-medium">Size: {techDotsLeft.size}px
-                <input type="range" min="100" max="1000" value={techDotsLeft.size} onChange={e => setTechDotsLeft({ ...techDotsLeft, size: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Top: {techDotsLeft.top}%
-                <input type="range" min="-100" max="100" value={techDotsLeft.top} onChange={e => setTechDotsLeft({ ...techDotsLeft, top: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Left: {techDotsLeft.left}%
-                <input type="range" min="-100" max="100" value={techDotsLeft.left} onChange={e => setTechDotsLeft({ ...techDotsLeft, left: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Opacity: {techDotsLeft.opacity}%
-                <input type="range" min="0" max="100" value={techDotsLeft.opacity} onChange={e => setTechDotsLeft({ ...techDotsLeft, opacity: Number(e.target.value) })} className="w-full mt-1 accent-red-600" />
-              </label>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Top Right Circuits</h4>
-              <label className="block text-xs text-gray-600 font-medium">Size: {techCircuits.size}px
-                <input type="range" min="100" max="1000" value={techCircuits.size} onChange={e => setTechCircuits({ ...techCircuits, size: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Top: {techCircuits.top}%
-                <input type="range" min="-100" max="100" value={techCircuits.top} onChange={e => setTechCircuits({ ...techCircuits, top: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Right: {techCircuits.right}%
-                <input type="range" min="-100" max="100" value={techCircuits.right} onChange={e => setTechCircuits({ ...techCircuits, right: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Opacity: {techCircuits.opacity}%
-                <input type="range" min="0" max="100" value={techCircuits.opacity} onChange={e => setTechCircuits({ ...techCircuits, opacity: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Top Right Circuit Dots</h4>
-              <label className="block text-xs text-gray-600 font-medium">Size: {techDots.size}px
-                <input type="range" min="100" max="1000" value={techDots.size} onChange={e => setTechDots({ ...techDots, size: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Top: {techDots.top}%
-                <input type="range" min="-100" max="100" value={techDots.top} onChange={e => setTechDots({ ...techDots, top: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Right: {techDots.right}%
-                <input type="range" min="-100" max="100" value={techDots.right} onChange={e => setTechDots({ ...techDots, right: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-              <label className="block text-xs text-gray-600 font-medium">Opacity: {techDots.opacity}%
-                <input type="range" min="0" max="100" value={techDots.opacity} onChange={e => setTechDots({ ...techDots, opacity: Number(e.target.value) })} className="w-full mt-1 accent-teal-600" />
-              </label>
-            </div>
 
             <div className="space-y-3 pt-4 border-t border-gray-100">
               <h4 className="font-semibold text-xs text-teal-600 uppercase tracking-wider">Bottom Right Circuits</h4>
