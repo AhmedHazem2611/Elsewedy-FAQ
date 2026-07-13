@@ -8,6 +8,11 @@ import { LoadingScreen } from './components/LoadingScreen';
 import { LeftIllustration, RightIllustration, educationImage } from './components/Illustrations';
 import { FAQEditor } from './components/FAQEditor';
 
+import buildingImage from './assets/building.png';
+import elsewedyLogo from './assets/Elsewedy logo.png';
+import ministryLogo from './assets/Ministry-of-Education-and-techinical-education logo.png';
+import appliedTechLogo from './assets/applied teccnology logo.png';
+
 import { useLocalStorage } from './hooks/useLocalStorage';
 
 // Custom hook for auto-saving state to localStorage
@@ -75,14 +80,41 @@ function App() {
   const [panelPos, setPanelPos] = useLocalStorage('tweaksPanelPos', { x: 16, y: 112 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
-  const [appReady, setAppReady] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [minTimePassed, setMinTimePassed] = useState(false);
+
+  useEffect(() => {
+    const imagesToLoad = [
+      buildingImage,
+      educationImage,
+      elsewedyLogo,
+      ministryLogo,
+      appliedTechLogo
+    ];
+    let loadedCount = 0;
+
+    imagesToLoad.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+      img.onload = () => {
+        loadedCount++;
+        if (loadedCount === imagesToLoad.length) setImagesLoaded(true);
+      };
+      img.onerror = () => {
+        loadedCount++;
+        if (loadedCount === imagesToLoad.length) setImagesLoaded(true);
+      };
+    });
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setAppReady(true);
-    }, 2800);
+      setMinTimePassed(true);
+    }, 1500); // 1.5s minimum loading screen time
     return () => clearTimeout(timer);
   }, []);
+
+  const appReady = imagesLoaded && minTimePassed;
 
   useEffect(() => {
     if (!isDragging) return;
