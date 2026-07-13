@@ -5,7 +5,8 @@ import {
   Globe, Laptop, Wifi, Coffee, CreditCard, DollarSign, UserPlus, Building, 
   ClipboardList, Home, MessageCircle, FileQuestion, ThumbsUp, Cpu, CircuitBoard, Microchip,
   UsersRound, Handshake, Rocket, Presentation, Gavel, Scale, Medal, ClipboardCheck,
-  HeartHandshake, Wrench, LifeBuoy, Headset, Stethoscope, Shield, Smile, ConciergeBell, Wand2, HandHeart
+  HeartHandshake, Wrench, LifeBuoy, Headset, Stethoscope, Shield, Smile, ConciergeBell, Wand2, HandHeart,
+  University, Landmark
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -16,7 +17,8 @@ export const iconMap: Record<string, LucideIcon> = {
   Globe, Laptop, Wifi, Coffee, CreditCard, DollarSign, UserPlus, Building, 
   ClipboardList, Home, MessageCircle, FileQuestion, ThumbsUp, Cpu, CircuitBoard, Microchip,
   UsersRound, Handshake, Rocket, Presentation, Gavel, Scale, Medal, ClipboardCheck,
-  HeartHandshake, Wrench, LifeBuoy, Headset, Stethoscope, Shield, Smile, ConciergeBell, Wand2, HandHeart
+  HeartHandshake, Wrench, LifeBuoy, Headset, Stethoscope, Shield, Smile, ConciergeBell, Wand2, HandHeart,
+  University, Landmark
 };
 
 export const availableIcons = Object.keys(iconMap);
