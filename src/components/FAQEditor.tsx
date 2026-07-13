@@ -11,8 +11,8 @@ interface FAQEditorProps {
 }
 
 export function FAQEditor({ onClose }: FAQEditorProps) {
-  const [faqs, setFaqs] = useLocalStorage<FAQ[]>('app_faqs', defaultFaqs);
-  const [categories, setCategories] = useLocalStorage<Category[]>('app_categories', defaultCategories);
+  const [faqs, setFaqs] = useLocalStorage<FAQ[]>('app_faqs_v2', defaultFaqs);
+  const [categories, setCategories] = useLocalStorage<Category[]>('app_categories_v2', defaultCategories);
   
   const safeFaqs = Array.isArray(faqs) ? faqs : defaultFaqs;
   const safeCategories = Array.isArray(categories) ? categories : defaultCategories;

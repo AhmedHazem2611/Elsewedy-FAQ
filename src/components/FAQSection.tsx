@@ -9,8 +9,8 @@ import { motion } from 'framer-motion';
 
 export function FAQSection() {
   const [openId, setOpenId] = useState<string | null>("1");
-  const [faqs] = useLocalStorage<FAQ[]>('app_faqs', defaultFaqs);
-  const [categories] = useLocalStorage<Category[]>('app_categories', defaultCategories);
+  const [faqs] = useLocalStorage<FAQ[]>('app_faqs_v2', defaultFaqs);
+  const [categories] = useLocalStorage<Category[]>('app_categories_v2', defaultCategories);
 
   // Safely fallback if data is corrupted (fixes white screen bug)
   const safeFaqs = Array.isArray(faqs) ? faqs : defaultFaqs;
