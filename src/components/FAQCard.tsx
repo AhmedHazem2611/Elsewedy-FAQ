@@ -10,6 +10,56 @@ interface FAQCardProps {
   onClick: () => void;
 }
 
+function renderAnswer(text: string) {
+  // Split by Markdown links [text](url)
+  const parts = text.split(/(\[[^\]]+\]\(https?:\/\/[^)]+\))/g);
+  
+  return parts.map((part, index) => {
+    // Check if part is a markdown link
+    const match = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/);
+    if (match) {
+      return (
+        <a 
+          key={index} 
+          href={match[2]} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className="text-red-600 hover:text-red-800 font-bold underline decoration-red-300 hover:decoration-red-600 underline-offset-4 transition-all"
+          onClick={e => e.stopPropagation()}
+        >
+          {match[1]}
+        </a>
+      );
+    }
+    
+    // Check for naked URLs in the text part
+    const subParts = part.split(/(https?:\/\/[^\s]+)/g);
+    return subParts.map((subPart, subIndex) => {
+      if (subPart.match(/^https?:\/\/[^\s]+$/)) {
+        return (
+          <a 
+            key={`${index}-${subIndex}`} 
+            href={subPart} 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="text-red-600 hover:text-red-800 font-bold underline decoration-red-300 hover:decoration-red-600 underline-offset-4 transition-all break-all"
+            onClick={e => e.stopPropagation()}
+          >
+            {subPart}
+          </a>
+        );
+      }
+      // Just normal text, handle newlines
+      return subPart.split('\n').map((line, i, arr) => (
+        <span key={`${index}-${subIndex}-${i}`}>
+          {line}
+          {i < arr.length - 1 && <br />}
+        </span>
+      ));
+    });
+  });
+}
+
 export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProps) {
   return (
     <motion.div
@@ -54,7 +104,7 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
               whileHover={{ y: -2 }}
               className="px-6 md:px-8 pb-8 pt-0 text-gray-600 text-lg leading-relaxed md:mr-[80px] cursor-default"
             >
-              {answer}
+              {renderAnswer(answer)}
             </motion.div>
           </motion.div>
         )}
