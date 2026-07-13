@@ -68,7 +68,6 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
       onClick={onClick}
       whileHover={!isOpen ? { y: -4 } : {}}
       transition={{ duration: 0.3 }}
-      layout
     >
       <div className="flex items-center justify-between p-6 md:p-8">
         <div className="flex items-center gap-6 flex-1">
