@@ -45,12 +45,12 @@ export function Hero({ marginTop, marginBottom }: HeroProps) {
       
       <motion.h1 
         whileHover={{ y: -2 }}
-        className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight cursor-default"
+        className="text-2xl sm:text-3xl md:text-5xl font-bold text-gray-900 mb-6 max-w-3xl leading-tight cursor-default"
       >
         الأسئلة <span className="animate-shine inline-block">الأكثر</span> شيوعًا
       </motion.h1>
       
-      <p className="text-gray-500 text-base sm:text-lg md:text-xl max-w-2xl leading-relaxed">
+      <p className="text-gray-500 text-sm sm:text-base md:text-xl max-w-2xl leading-relaxed px-2">
         كل ما يحتاجه أولياء الأمور لمعرفة المزيد عن مدرسة السويدي للتكنولوجيا التطبيقية،
         <br className="hidden md:block" />
         قبل التقديم.

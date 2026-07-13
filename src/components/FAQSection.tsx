@@ -51,7 +51,7 @@ export function FAQSection() {
             className="flex items-center gap-4"
           >
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-red-200 to-transparent" />
-            <h2 className="text-xl font-bold text-gray-800 text-center">{group.category.name}</h2>
+            <h2 className="text-lg md:text-xl font-bold text-gray-800 text-center">{group.category.name}</h2>
             <div className="h-px flex-1 bg-gradient-to-r from-transparent via-red-200 to-transparent" />
           </motion.div>
           
