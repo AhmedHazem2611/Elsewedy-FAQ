@@ -3,7 +3,8 @@ import {
   Settings, MapPin, Phone, Mail, Calendar, Clock, Briefcase, FileText, Award, 
   Star, Heart, CheckCircle, AlertCircle, Bus, Calculator, Library, PenTool, 
   Globe, Laptop, Wifi, Coffee, CreditCard, DollarSign, UserPlus, Building, 
-  ClipboardList, Home, MessageCircle, FileQuestion, ThumbsUp, Cpu, CircuitBoard, Microchip 
+  ClipboardList, Home, MessageCircle, FileQuestion, ThumbsUp, Cpu, CircuitBoard, Microchip,
+  UsersRound, Handshake, Rocket, Presentation, Gavel, Scale, Medal, ClipboardCheck
 } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 
@@ -12,7 +13,8 @@ export const iconMap: Record<string, LucideIcon> = {
   Settings, MapPin, Phone, Mail, Calendar, Clock, Briefcase, FileText, Award, 
   Star, Heart, CheckCircle, AlertCircle, Bus, Calculator, Library, PenTool, 
   Globe, Laptop, Wifi, Coffee, CreditCard, DollarSign, UserPlus, Building, 
-  ClipboardList, Home, MessageCircle, FileQuestion, ThumbsUp, Cpu, CircuitBoard, Microchip
+  ClipboardList, Home, MessageCircle, FileQuestion, ThumbsUp, Cpu, CircuitBoard, Microchip,
+  UsersRound, Handshake, Rocket, Presentation, Gavel, Scale, Medal, ClipboardCheck
 };
 
 export const availableIcons = Object.keys(iconMap);
