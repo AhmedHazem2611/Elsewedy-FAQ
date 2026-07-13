@@ -20,6 +20,7 @@ export function LoadingScreen() {
       />
       <motion.div
         className="mt-8 w-32 h-1 bg-gray-200 rounded-full overflow-hidden"
+        dir="ltr"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
