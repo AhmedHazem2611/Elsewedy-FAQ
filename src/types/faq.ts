@@ -14,7 +14,7 @@ export type FAQ = {
 
 export const defaultCategories: Category[] = [
   { id: "cat-1", name: "أسئلة عامة", order: 1 },
-  { id: "cat-2", name: "شروط التقديم والقبول", order: 2 },
+  { id: "cat-2", name: "شروط التقديم والقبول", order: 99 },
   { id: "cat-3", name: "الدراسة والمناهج", order: 3 },
 ];
 
