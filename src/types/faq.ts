@@ -108,7 +108,7 @@ export const defaultFaqs: FAQ[] = [
   {
     "id": "1783961166115",
     "question": "ما هي المرافق التعليمية المتوفرة داخل المدرسة؟",
-    "answer": "تضم المدرسة عددًا من المرافق التعليمية، منها:\n\nEnglish Lab\nFab Lab\nMusic Room\nArt Room",
+    "answer": "تضم المدرسة عددًا من المرافق التعليمية، منها:\n\n- English Lab\n- Fab Lab\n- Music Room\n- Art Room",
     "iconName": "School",
     "categoryId": "cat-1783961153389"
   },
