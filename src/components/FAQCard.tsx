@@ -78,7 +78,7 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
           </div>
           <motion.h3 
             whileHover={{ y: -2 }}
-            className={`text-base md:text-xl font-bold transition-colors duration-300 cursor-default ${isOpen ? 'text-gray-900' : 'text-gray-700'}`}
+            className={`text-base md:text-xl font-bold transition-colors duration-300 cursor-default text-pretty ${isOpen ? 'text-gray-900' : 'text-gray-700'}`}
           >
             {question}
           </motion.h3>
@@ -102,7 +102,7 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
           >
             <motion.div 
               whileHover={{ y: -2 }}
-              className="px-6 md:px-8 pb-8 pt-0 text-gray-600 text-sm md:text-lg leading-relaxed md:mr-[80px] cursor-default"
+              className="px-6 md:px-8 pb-8 pt-0 text-gray-600 text-sm md:text-lg leading-relaxed md:mr-[80px] cursor-default text-pretty"
             >
               {renderAnswer(answer)}
             </motion.div>
