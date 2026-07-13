@@ -1,16 +1,19 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { FAQCard } from './FAQCard';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { defaultFaqs, defaultCategories } from '../types/faq';
 import type { FAQ, Category } from '../types/faq';
-import { iconMap } from '../utils/icons';
-import { HelpCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function FAQSection() {
   const [openId, setOpenId] = useState<string | null>("1");
   const [faqs] = useLocalStorage<FAQ[]>('app_faqs_v2', defaultFaqs);
   const [categories] = useLocalStorage<Category[]>('app_categories_v2', defaultCategories);
+
+  // Stable toggle handler for FAQCard memoization
+  const handleToggle = useCallback((id: string) => {
+    setOpenId(prev => (prev === id ? null : id));
+  }, []);
 
   // Safely fallback if data is corrupted (fixes white screen bug)
   const safeFaqs = Array.isArray(faqs) ? faqs : defaultFaqs;
@@ -56,19 +59,17 @@ export function FAQSection() {
           </motion.div>
           
           <div className="flex flex-col gap-4">
-            {group.items.map((faq: FAQ) => {
-              const IconComponent = iconMap[faq.iconName] || HelpCircle;
-              return (
-                <FAQCard
-                  key={faq.id}
-                  question={faq.question}
-                  answer={faq.answer}
-                  icon={<IconComponent size={24} strokeWidth={2} />}
-                  isOpen={openId === faq.id}
-                  onClick={() => setOpenId(openId === faq.id ? null : faq.id)}
-                />
-              );
-            })}
+            {group.items.map((faq: FAQ) => (
+              <FAQCard
+                key={faq.id}
+                id={faq.id}
+                question={faq.question}
+                answer={faq.answer}
+                iconName={faq.iconName}
+                isOpen={openId === faq.id}
+                onToggle={handleToggle}
+              />
+            ))}
           </div>
         </div>
       ))}

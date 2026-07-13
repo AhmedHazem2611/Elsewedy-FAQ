@@ -1,13 +1,15 @@
+import { memo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
-import type { ReactNode } from 'react';
+import { ChevronDown, HelpCircle } from 'lucide-react';
+import { iconMap } from '../utils/icons';
 
 interface FAQCardProps {
+  id: string;
   question: string;
   answer: string;
-  icon: ReactNode;
+  iconName: string;
   isOpen: boolean;
-  onClick: () => void;
+  onToggle: (id: string) => void;
 }
 
 function renderAnswer(text: string) {
@@ -60,12 +62,14 @@ function renderAnswer(text: string) {
   });
 }
 
-export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProps) {
+export const FAQCard = memo(function FAQCard({ id, question, answer, iconName, isOpen, onToggle }: FAQCardProps) {
+  const IconComponent = iconMap[iconName] || HelpCircle;
+  
   return (
     <motion.div
       className={`bg-white rounded-[24px] overflow-hidden border border-gray-100 cursor-pointer 
         ${isOpen ? 'shadow-2xl shadow-gray-200/60 z-20 relative' : 'shadow-lg shadow-gray-100/80 hover:shadow-xl z-10 relative'}`}
-      onClick={onClick}
+      onClick={() => onToggle(id)}
       whileHover={!isOpen ? { y: -4 } : {}}
       transition={{ duration: 0.3 }}
     >
@@ -73,7 +77,7 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
         <div className="flex items-center gap-6 flex-1">
           <div className={`w-14 h-14 rounded-full flex items-center justify-center shrink-0 transition-colors duration-300 border 
             ${isOpen ? 'bg-red-50 border-red-100 text-[var(--color-elsewedy-red)]' : 'bg-gray-50 border-gray-100 text-teal-600'}`}>
-            {icon}
+            <IconComponent size={24} strokeWidth={2} />
           </div>
           <motion.h3 
             whileHover={{ y: -2 }}
@@ -110,4 +114,4 @@ export function FAQCard({ question, answer, icon, isOpen, onClick }: FAQCardProp
       </AnimatePresence>
     </motion.div>
   );
-}
+});
