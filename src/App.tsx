@@ -73,7 +73,7 @@ function App() {
     return () => window.removeEventListener('resize', handleScreenResize);
   }, []);
 
-  const [showControls, setShowControls] = useState(false);
+  const [showControls, setShowControls] = useState(true);
   const [showSaveMessage, setShowSaveMessage] = useState(false);
 
   // Dragging state
