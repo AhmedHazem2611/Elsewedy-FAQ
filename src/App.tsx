@@ -16,7 +16,7 @@ import appliedTechLogo from './assets/applied teccnology logo.png';
 import { useLocalStorage } from './hooks/useLocalStorage';
 
 // Custom hook for auto-saving state to localStorage
-const ENABLE_DEV_TOOLS = true;
+const ENABLE_DEV_TOOLS = false;
 
 function App() {
   const [leftSettings, setLeftSettings] = useLocalStorage('leftSettingsTop', { size: 50, top: 24, left: -9 });
